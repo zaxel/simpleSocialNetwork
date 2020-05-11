@@ -7,7 +7,7 @@ const Post = (props) => {
     <img src='https://download-cs.net/steam/avatars/3447.jpg' />
      {props.message}
      <div>
-      <span>{props.like} like</span>
+      <span>{props.likes} likes</span>
      </div>
    </div>
   );
