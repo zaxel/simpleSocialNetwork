@@ -15,15 +15,24 @@ const MyPosts = (props) => {
     <Post message={post.post} likes={post.likes} />
   ));
 
+  let newPostRef = React.createRef();
+
+  let addPost = ()=>{
+    debugger;
+  let newMessage = newPostRef.current.value;
+    
+    props.addPost(newMessage);
+  }
+
   return (
     <div className={classes.postBlock}>
       <h3>My posts</h3>
       <div>
         <div>
-          <textarea></textarea>
+          <textarea ref={newPostRef}></textarea>
         </div>
         <div>
-          <button>Add Post</button>
+          <button onClick={addPost}>Add Post</button>
           <button>Remove</button>
         </div>
       </div>
