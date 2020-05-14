@@ -14,15 +14,14 @@ const MessageSection = (props) => {
     <Messages message={post.message} />
   ));
   
-  let newMessageRef = React.createRef();
   
   let sendMessage = ()=>{
     props.dispatch(addMessageActionCreator());
     
   }
   
-  let onMessageChange = () => {
-    let message = newMessageRef.current.value;
+  let onMessageChange = (e) => {
+    let message = e.target.value;
     props.dispatch(addUpdateNewMessageCreator(message));
   
   }
@@ -33,7 +32,7 @@ const MessageSection = (props) => {
       <h3>My Messages</h3>
       <div>
         <div>
-          <textarea onChange={onMessageChange} ref={newMessageRef} value={props.newMessageText}/>
+          <textarea onChange={onMessageChange} value={props.newMessageText}/>
         </div>
         <div>
           <button onClick={sendMessage}>Add Post</button>
