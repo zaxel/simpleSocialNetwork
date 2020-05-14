@@ -11,7 +11,7 @@ const MyPosts = (props) => {
   //   { id: 5, likes: 3, post: "We recommend them to more experienced users" },
   // ];
 
-  let postItem = props.postData.map((post) => (
+  let postItem = props.posts.map((post) => (
     <Post message={post.post} likes={post.likes} />
   ));
 
@@ -22,9 +22,9 @@ const MyPosts = (props) => {
     
   }
 
-  let changeTextArea = () => {
-    let newMessage = newPostRef.current.value;
-    props.changeTextAreaText(newMessage);
+  let onPostChange = () => {
+    let text = newPostRef.current.value;
+    props.updateNewPostText(text);
   }
 
   return (
@@ -32,7 +32,7 @@ const MyPosts = (props) => {
       <h3>My posts</h3>
       <div>
         <div>
-          <textarea onChange={changeTextArea} ref={newPostRef} value={props.newPostText}/>
+          <textarea onChange={onPostChange} ref={newPostRef} value={props.newPostText}/>
         </div>
         <div>
           <button onClick={addPost}>Add Post</button>
