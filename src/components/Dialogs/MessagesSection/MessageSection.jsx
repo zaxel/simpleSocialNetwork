@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./MessageSection.module.css";
 import Messages from "./Messages/Messages";
-import {addMessageActionCreator, addUpdateNewMessageCreator} from './../../../redux/state';
+import {addMessageActionCreator, addUpdateNewMessageCreator} from './../../../redux/DialogsReducer';
 
 
 
@@ -30,6 +30,7 @@ const MessageSection = (props) => {
   return (
     <div className={classes.postBlock}>
       <h3>My Messages</h3>
+      <div>{postMessageItem}</div>
       <div>
         <div>
           <textarea onChange={onMessageChange} value={props.newMessageText}/>
@@ -39,7 +40,7 @@ const MessageSection = (props) => {
           <button>Remove</button>
         </div>
       </div>
-      <div>{postMessageItem}</div>
+      
     </div>
   );
 };
