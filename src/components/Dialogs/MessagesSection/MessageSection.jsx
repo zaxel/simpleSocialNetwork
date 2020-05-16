@@ -1,8 +1,7 @@
 import React from "react";
 import classes from "./MessageSection.module.css";
 import Messages from "./Messages/Messages";
-import {addMessageActionCreator, addUpdateNewMessageCreator} from './../../../redux/DialogsReducer';
-
+import MessageSectionContainer from "./MessageSectionContainer";
 
 
 
@@ -15,15 +14,16 @@ const MessageSection = (props) => {
   ));
   
   
-  let sendMessage = ()=>{
-    props.dispatch(addMessageActionCreator());
+  let onSendMessageClick = ()=>{
+    props.onSendMessage();
+    // props.dispatch(addMessageActionCreator());
     
   }
   
   let onMessageChange = (e) => {
     let message = e.target.value;
-    props.dispatch(addUpdateNewMessageCreator(message));
-  
+    // props.dispatch(addUpdateNewMessageCreator(message));
+    props.UpdateNewMessage(message);
   }
 
 
@@ -36,7 +36,7 @@ const MessageSection = (props) => {
           <textarea onChange={onMessageChange} value={props.newMessageText}/>
         </div>
         <div>
-          <button onClick={sendMessage}>Add Post</button>
+          <button onClick={onSendMessageClick}>Add Post</button>
           <button>Remove</button>
         </div>
       </div>
