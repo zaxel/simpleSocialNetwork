@@ -1,7 +1,8 @@
 import React from "react";
 import classes from "./MessageSection.module.css";
 import Messages from "./Messages/Messages";
-import MessageSectionContainer from "./MessageSectionContainer";
+// import MessageSectionContainer from "./MessageSectionContainer";
+import MessageSectionContainer from "react-redux";
 
 
 
