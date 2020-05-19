@@ -1,0 +1,42 @@
+
+.item{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  color: aqua;
+  padding: 10px 50px;
+}
+.userPhoto{
+  max-width: 60px;
+  max-height: 60px;
+  
+}
+.userPhoto img{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid aqua;
+  object-fit: cover;
+}
+.UserFollowStatus{
+  margin: 10px;
+}
+.usersRightBlock{
+  flex: 0 0 10%;
+}
+.usersRightBlock{
+  flex: 0 0 90%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid aqua;
+  border-radius: 10px;
+  padding: 10px;
+  margin-left: 20px;
+}
+.userName{
+  font-size: 20px;
+  font-weight: bold;
+}
