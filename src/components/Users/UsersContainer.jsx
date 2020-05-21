@@ -12,11 +12,11 @@ let mapStateToProps = (state) => {
   }
   let mapDispatchToProps = (dispatch) =>{
     return{
-        follow : (userId) => {
-            dispatch(followAC(userId))
+        follow : (id) => {
+            dispatch(followAC(id))
         },
-        unFollow : (userId) => {
-            dispatch(unFollowAC(userId))
+        unFollow : (id) => {
+            dispatch(unFollowAC(id))
         },
         setUser : (users) => {
             dispatch(setUsersAC(users))

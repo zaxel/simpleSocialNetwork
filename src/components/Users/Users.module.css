@@ -23,10 +23,10 @@
   margin: 10px;
 }
 .usersRightBlock{
-  flex: 0 0 10%;
+  flex: 0 0 20%;
 }
 .usersRightBlock{
-  flex: 0 0 90%;
+  flex: 0 0 80%;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;

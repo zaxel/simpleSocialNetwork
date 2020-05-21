@@ -7,10 +7,10 @@ const SET_USERS = 'SET-USERS';
 
 let initialiseState = {
     users: [
-        { userId: 1, userPhotoUrl: 'https://farm4.staticflickr.com/3704/10544706395_652766edde_c.jpg', followed: true, fullName: "Alex B", status: "I am happy", location: {country: "UK", city: "Glasgow" }},
-        { userId: 2, userPhotoUrl: 'https://farm4.staticflickr.com/3704/10544706395_652766edde_c.jpg', followed: false, fullName: "Joss N", status: "Yo yo yo", location: {country: "UK", city: "London" }},
-        { userId: 3, userPhotoUrl: 'https://farm4.staticflickr.com/3704/10544706395_652766edde_c.jpg', followed: false, fullName: "Mark N", status: "Dancing every day", location: {country: "France", city: "Paris" }},
-        { userId: 4, userPhotoUrl: 'https://farm4.staticflickr.com/3704/10544706395_652766edde_c.jpg', followed: false, fullName: "Steave C", status: "enjoing my holydays", location: {country: "Germani", city: "Berlin" }},
+        //{ userId: 1, userPhotoUrl: 'https://farm4.staticflickr.com/3704/10544706395_652766edde_c.jpg', followed: true, fullName: "Alex B", status: "I am happy", location: {country: "UK", city: "Glasgow" }},
+        //{ userId: 2, userPhotoUrl: 'https://farm4.staticflickr.com/3704/10544706395_652766edde_c.jpg', followed: false, fullName: "Joss N", status: "Yo yo yo", location: {country: "UK", city: "London" }},
+        //{ userId: 3, userPhotoUrl: 'https://farm4.staticflickr.com/3704/10544706395_652766edde_c.jpg', followed: false, fullName: "Mark N", status: "Dancing every day", location: {country: "France", city: "Paris" }},
+        //{ userId: 4, userPhotoUrl: 'https://farm4.staticflickr.com/3704/10544706395_652766edde_c.jpg', followed: false, fullName: "Steave C", status: "enjoing my holydays", location: {country: "Germani", city: "Berlin" }},
         // { userId: 5, followed: true, fullName: "Sarah V", status: "visit my site www.abracadabra.net", location: {country: "Ukrain", city: "Lviv" }},
         // { userId: 6, followed: false, fullName: "Sandra B", status: "sleeping", location: {country: "Ukraine", city: "Kyiv" }},
         // { userId: 7, followed: true, fullName: "Andrew S", status: "try best cookies in the Chad", location: {country: "Chad", city: "Tarkow" }},
@@ -32,7 +32,7 @@ const UsersReducer = (state = initialiseState, action) => {
             ...state, 
             //users: [...state.users],
             users: state.users.map( u => {
-                if (u.userId === action.userId){
+                if (u.id === action.id){
                     return {...u, followed: true}
                 } 
                 return u;
@@ -44,7 +44,7 @@ const UsersReducer = (state = initialiseState, action) => {
             ...state, 
             //users: [...state.users],
             users: state.users.map( u => {
-                if (u.userId === action.userId){
+                if (u.id === action.id){
                     return {...u, followed: false}
                 } 
                 return u;
@@ -65,8 +65,8 @@ const UsersReducer = (state = initialiseState, action) => {
     
 }
 
-export const followAC = (userId)=>({type: FOLLOW, userId});
-export const unFollowAC = (userId)=>({type: UNFOLLOW, userId});
+export const followAC = (id)=>({type: FOLLOW, id});
+export const unFollowAC = (id)=>({type: UNFOLLOW, id});
 export const setUsersAC = (users) => ({type: SET_USERS, users});
 
 
