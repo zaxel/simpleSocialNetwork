@@ -3,6 +3,8 @@ import { useCallback } from "react";
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
+const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
+const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
 
 
 let initialiseState = {
@@ -22,7 +24,10 @@ let initialiseState = {
         // { userId: 13, followed: true, fullName: "Kevin C", status: "Some statuse here", location: {country: "Ukraine", city: "Lviv" }},
         // { userId: 14, followed: true, fullName: "Ben L", status: "Badabum...", location: {country: "Belarus", city: "Minsk" }},
         
-      ]
+      ],
+      pageSize: 100,
+      totalUsersCount: 0,
+      currentPage: 1
 }
 
 const UsersReducer = (state = initialiseState, action) => {
@@ -54,8 +59,20 @@ const UsersReducer = (state = initialiseState, action) => {
         case SET_USERS:
             return {
                 ...state, 
-                users: [...state.users, ...action.users]
+                users: action.users
             };
+
+        case SET_CURRENT_PAGE:
+            return {
+                ...state, 
+                currentPage: action.currentPage
+            };
+        case SET_TOTAL_USERS_COUNT:
+            return {
+                ...state, 
+                totalUsersCount: action.totalUsersCount
+            };
+
         default:
             return state;
     }
@@ -68,6 +85,8 @@ const UsersReducer = (state = initialiseState, action) => {
 export const followAC = (id)=>({type: FOLLOW, id});
 export const unFollowAC = (id)=>({type: UNFOLLOW, id});
 export const setUsersAC = (users) => ({type: SET_USERS, users});
+export const setCurPageAC = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
+export const setTotalUsersCountAC = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount});
 
 
     

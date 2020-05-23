@@ -1,31 +1,42 @@
 import React from 'react';
 import classes from './Users.module.css';
-import * as axios from 'axios';
 import userPhoto from './../../assets/images/user.jpg';
 
 
-class Users extends React.Component {
+const Users = (props) => {
 
-    
+    let pagesCount = Math.ceil(props.totalUsersCount /props.pageSize);
+    let pages = [];
 
-    componentDidMount = () =>{
-        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
-            //debugger;
-            this.props.setUser(response.data.items);
-        });
+    for(let i=1; i<=pagesCount; i++){
+        pages.push(i);
     }
 
-    render (){
-        return (
-            this.props.users.map(u =>  <div key={u.id} className={classes.item}>
+
+    return( 
+    <div>
+        <div className={classes.page}> { pages.map(p =>{  
+            return <span className={props.currentPage === p && classes.selectedPage} 
+            onClick={(e)=>{props.onPageChanged(p)}}>{p}</span> 
+                }) 
+            }
+            
+            {/* <span>1</span>
+            <span className={classes.selectedPage}>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span> */}
+        </div>
+        {
+            props.users.map(u =>  <div key={u.id} className={classes.item}>
                 <div className={classes.usersLeftBlock}>
                     <div className={classes.userPhoto}>
                         <img src={u.photos.small != null ? u.photos.small : userPhoto} />
                     </div>
                     <div className={classes.UserFollowStatus}>
                     {u.followed === true ? 
-                    <button onClick={()=>{this.props.unFollow(u.id)}}> unfollow</button> 
-                    : <button onClick={()=>{this.props.follow(u.id)}}>follow</button>}
+                    <button onClick={()=>{props.unFollow(u.id)}}> unfollow</button> 
+                    : <button onClick={()=>{props.follow(u.id)}}>follow</button>}
                     </div>
                 </div>
                 <div className={classes.usersRightBlock}>
@@ -39,9 +50,12 @@ class Users extends React.Component {
                     </div>
                 </div>
             </div>)
-        );
-           
-    }
+        }
+                
+        </div>
+    );
 }
+
+
 
 export default Users;
