@@ -14,7 +14,7 @@ const MyPosts = (props) => {
   // ];
 
   let postItem = props.posts.map((post) => (
-    <Post message={post.post} likes={post.likes} />
+    <Post key={post.id} message={post.post} likes={post.likes} />
   ));
 
   let newPostRef = React.createRef();
