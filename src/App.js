@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "./components/Header/Header";
+import HeaderContainer from "./components/Header/HeaderContainer";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import ProfileContainer from "./components/Profile/ProfileContainer";
@@ -16,7 +16,7 @@ const App = (props) => {
     
     <BrowserRouter>
       <div className="app-wrapper">
-        <Header />
+        <HeaderContainer />
         <Navbar />
         {/* <div className="app-wrapper-content">
           <Route path='/profile' component={Profile}/>

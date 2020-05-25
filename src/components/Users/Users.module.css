@@ -43,7 +43,7 @@
 .page{
   color: white;
   text-align: center;
-  
+  overflow: hidden;
 }
 .page span{
   padding: 0 15px;
