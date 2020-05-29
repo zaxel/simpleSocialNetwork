@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import * as axios from 'axios';
 import Users from './Users';
 import Preloader from './../common/Preloader/Preloader';
+import {usersAPI} from '../../api/api';
 
 
 class UsersContainer extends React.Component {
@@ -12,25 +13,21 @@ class UsersContainer extends React.Component {
 
     componentDidMount = () =>{
         this.props.toggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,{
-            withCredentials: true
-        }).then(response => {
+        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
             //debugger;
             this.props.toggleIsFetching(false);
-            this.props.setUser(response.data.items);
-            this.props.setTotalUsersCount(response.data.totalCount);
+            this.props.setUser(data.items);
+            this.props.setTotalUsersCount(data.totalCount);
         });
     }
 
     onPageChanged = (pageNumber) => {
         this.props.toggleIsFetching(true);
         this.props.setCurPage(pageNumber);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`,{
-            withCredentials: true
-        }).then(response => {
+        usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
             //debugger;
             this.props.toggleIsFetching(false);
-            this.props.setUser(response.data.items);
+            this.props.setUser(data.items);
             
         });
     }
@@ -58,35 +55,9 @@ let mapStateToProps = (state) => {
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching
-    //   posts: state.profilePage.posts,
-    //   newPostText: state.profilePage.newPostText
     }
 }
-// let mapDispatchToProps = (dispatch) =>{
-//   return{
-//       follow : (id) => {
-//           dispatch(followAC(id))
-//       },
-//       unFollow : (id) => {
-//           dispatch(unFollowAC(id))
-//       },
-//       setUser : (users) => {
-//           dispatch(setUsersAC(users))
-//       },
-//       setCurPage : (pageNumber) => {
-//           dispatch(setCurPageAC(pageNumber))
-//       },
-//       setTotalUsersCount : (totalUsersCount) => {
-//           dispatch(setTotalUsersCountAC(totalUsersCount))
-//       },
-//       toggleIsFetching : (isFetching) => {
-//           dispatch(toggleIsFetchingAC(isFetching))
-//       }
-      
-//   //   UpdateNewPostText: (text) => {dispatch(addUpdateNewPostCreator(text))},
-//   //   addPost: () => {dispatch(addPostActionCreator())}
-//   }
-// }
+
   
   
 

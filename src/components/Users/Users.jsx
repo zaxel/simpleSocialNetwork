@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Users.module.css';
 import userPhoto from './../../assets/images/user.jpg';
 import {NavLink} from 'react-router-dom';
-import * as axios from 'axios';
+import {followAPI, unfollowAPI} from '../../api/api';
 
 
 const Users = (props) => {
@@ -42,27 +42,18 @@ const Users = (props) => {
                         {u.followed === true 
                         ? <button onClick={()=>{
                             
-                            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,{
-                                withCredentials: true,
-                                headers: {
-                                    "API-KEY" : "a7b33439-f5b5-41e2-9b01-b7da8e190c1b"
-                                }
-                                }).then(response => {
+                            unfollowAPI.unfollowUser(u.id)
+                            .then(data => {
                                     //debugger;
-                                    if (response.data.resultCode == 0){
+                                    if (data.resultCode == 0){
                                         props.unFollow(u.id)
                                     };
                                 });
                         }}> unfollow</button> 
                         : <button onClick={()=>{
-                            axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,{},{
-                                withCredentials: true,
-                                headers: {
-                                    "API-KEY" : "a7b33439-f5b5-41e2-9b01-b7da8e190c1b"
-                                }
-                                }).then(response => {
+                            followAPI.followUser(u.id).then(data => {
                                     //debugger;
-                                    if (response.data.resultCode == 0){
+                                    if (data.resultCode == 0){
                                         props.follow(u.id)
                                     };
                                 });
