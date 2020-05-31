@@ -5,7 +5,7 @@ import * as axios from 'axios';
 const instence = axios.create({
     withCredentials: true,
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
-    headers: {"API-KEY" : "a7b33439-f5b5-41e2-9b01-b7da8e190c1b"}
+    headers: {"API-KEY" : "1203fa1f-c9a4-43f5-bca3-2e2f29d0227d"}
 });
 
 export const usersAPI = {
