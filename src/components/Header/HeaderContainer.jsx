@@ -1,30 +1,27 @@
 import React from 'react';
 import Header from './Header';
-import * as axios from 'axios';
 import { connect } from 'react-redux';
-import {setAuthUserData, setUserProfileLogo} from './../../redux/AuthReducer';
-import {usersAPI} from './../../api/api';
+import {setUserAuthBlock} from './../../redux/AuthReducer';
 
 class HeaderContainer extends React.Component {
 
-  componentDidMount(){
-    usersAPI.checkIfLogged().then(data => {
-    if(data.resultCode === 0){
-      let {id, login, email} = data.data;
-      this.props.setAuthUserData(id, login, email);
-      getUserLogos(id);
-    }
-      // debugger;
-  });
-  const getUserLogos = (id) => {
-    usersAPI.getUserLogo (id)
-    .then(data => {
-      this.props.setUserProfileLogo(data.photos.small);
-    });
-  }
-    
-    
-   
+  componentDidMount = () => {
+    // usersAPI.checkIfLogged().then(data => {
+    //   if(data.resultCode === 0){
+    //     let {id, login, email} = data.data;
+    //     this.props.setAuthUserData(id, login, email);
+    //     getUserLogos(id);
+    //   }
+    //   // debugger;
+    // });
+    this.props.setUserAuthBlock();
+
+    // const getUserLogos = (id) => {
+    //   usersAPI.getUserLogo (id)
+    //   .then(data => {
+    //     this.props.setUserProfileLogo(data.photos.small);
+    //   });
+    // }
     
   }
   
@@ -46,4 +43,4 @@ const mapStateToProps = (state) =>({
 });
 
 
-export default connect(mapStateToProps, {setAuthUserData, setUserProfileLogo})(HeaderContainer);
+export default connect(mapStateToProps, {setUserAuthBlock})(HeaderContainer);
