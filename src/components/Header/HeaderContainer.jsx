@@ -3,12 +3,12 @@ import Header from './Header';
 import * as axios from 'axios';
 import { connect } from 'react-redux';
 import {setAuthUserData, setUserProfileLogo} from './../../redux/AuthReducer';
-import {ifLoggedInAPI, userLogoAPI} from './../../api/api';
+import {usersAPI} from './../../api/api';
 
 class HeaderContainer extends React.Component {
 
   componentDidMount(){
-    ifLoggedInAPI.checkIfLogged().then(data => {
+    usersAPI.checkIfLogged().then(data => {
     if(data.resultCode === 0){
       let {id, login, email} = data.data;
       this.props.setAuthUserData(id, login, email);
@@ -17,7 +17,7 @@ class HeaderContainer extends React.Component {
       // debugger;
   });
   const getUserLogos = (id) => {
-    userLogoAPI.getUserLogo (id)
+    usersAPI.getUserLogo (id)
     .then(data => {
       this.props.setUserProfileLogo(data.photos.small);
     });
