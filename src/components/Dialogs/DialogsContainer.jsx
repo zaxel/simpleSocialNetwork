@@ -12,7 +12,7 @@ class DialogsContainer extends React.Component{
       
     return (
       <div >
-        <Dialogs dialogs={this.props.dialogs}/>
+        <Dialogs dialogs={this.props.dialogs} isAuth={this.props.isAuth}/>
       </div>
     );
   }
@@ -23,6 +23,7 @@ let mapStateToProps = (state) => {
   return{
       store: state.dialogsPage,
       dialogs : state.dialogsPage.dialogs,
+      isAuth : state.auth.isAuth
   }
 }
 
