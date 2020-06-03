@@ -9,6 +9,7 @@ import instagram from './../../../assets/images/socials/instagram.svg';
 import youtube from './../../../assets/images/socials/youtube.svg';
 import github from './../../../assets/images/socials/github.svg';
 import userPhoto from './../../../assets/images/user.jpg';
+import ProfileStatus from './ProfileStatus';
 
 const ProfileInfo = (props) => {
   if(!props.profile){
@@ -29,6 +30,7 @@ const ProfileInfo = (props) => {
         <div className={classes.userDescrContainer}>
           <div className={classes.userDescr}>
             <div className={classes.userName}>{props.profile.fullName}</div>
+            <ProfileStatus status={'Hey, I\'m using faceboork now!!!'}/>
             <div className={classes.userAbout}>{props.profile.aboutMe ? props.profile.aboutMe : 'Some user descriptions here...'}</div>
             <div className={classes.userSocialsContainer}>
               <div className={classes.userWeb}> 
@@ -48,9 +50,13 @@ const ProfileInfo = (props) => {
             </div>
           </div>
           <div className={classes.userJobsSearchBlock}>
-          <div className={classes.userJobsSearch}>Looking for the job: {props.profile.lookingForAJob ? 'YES' : 'NO'}</div>
-          <div className={classes.userJobsSearchDescr}>Descriptions: {props.profile.lookingForAJobDescription ? props.profile.lookingForAJobDescription : 'No descriptions added yet'}
-            
+            <div className={classes.userJobsSearch}>Looking for the job: 
+              {props.profile.lookingForAJob ? 'YES' : 'NO'}
+            </div>
+            <div className={classes.userJobsSearchDescr}>Descriptions: 
+              {props.profile.lookingForAJobDescription 
+              ? props.profile.lookingForAJobDescription 
+              : 'No descriptions added yet'}
             </div>
           </div>
         </div>
