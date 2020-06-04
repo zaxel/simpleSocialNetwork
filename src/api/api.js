@@ -45,10 +45,36 @@ export const usersAPI = {
     },
 
     getUserProfile (id){
+        console.warn('Obsolete methode! Use profileAPI object instead!');
+        return profileAPI.getUserProfile(id);
+    }
+}
+export const profileAPI = {
+    getUserProfile (id){
         return instence.get(`profile/${id}`)
         .then (response => {
             return response.data;
         })
-    }
+    },
+    getUserStatus (id){
+        return instence.get(`profile/status/${id}`)
+        .then (response => {
+            return response.data;
+        })
+    },
+    updateStatuse (status){
+        return instence.put(`profile/status`, 
+        {
+            status: status
+        })
+    },
+    // getUserStatus (id){
+    //     return instence.get(`profile/status/${id}`);
+    // },
+    // updateUserStatuse (status){
+    //     return instence.put(`profile/status`, {
+    //         status: status
+    //     });
+    // }
 }
 

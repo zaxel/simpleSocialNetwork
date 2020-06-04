@@ -21,6 +21,7 @@ const ProfileInfo = (props) => {
   return(
     <div >
       <div>
+      
         <img src={profileHeader} />
       </div>
       <div className={classes.descriptionBlock}>
@@ -30,7 +31,7 @@ const ProfileInfo = (props) => {
         <div className={classes.userDescrContainer}>
           <div className={classes.userDescr}>
             <div className={classes.userName}>{props.profile.fullName}</div>
-            <ProfileStatus status={'Hey, I\'m using faceboork now!!!'}/>
+            <ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus}/>
             <div className={classes.userAbout}>{props.profile.aboutMe ? props.profile.aboutMe : 'Some user descriptions here...'}</div>
             <div className={classes.userSocialsContainer}>
               <div className={classes.userWeb}> 

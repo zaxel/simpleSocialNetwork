@@ -1,8 +1,9 @@
-import {usersAPI} from './../api/api';
+import {usersAPI, profileAPI} from './../api/api';
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
+const SET_USER_STATUS = 'SET-USER-STATUS';
 
 
 let initialiseState = {
@@ -14,7 +15,8 @@ let initialiseState = {
         { id: 5, likes: 3, post: "We recommend them to more experienced users" },
       ],
       newPostText: 'some test from state',
-      profile: null
+      profile: null,
+      status: ''
 }
 const ProfileReducer = (state = initialiseState, action) => {
     switch(action.type){
@@ -38,6 +40,11 @@ const ProfileReducer = (state = initialiseState, action) => {
                 ...state,
                 profile: action.profile
             };
+        case SET_USER_STATUS:
+            return{
+                ...state,
+                status: action.status
+            };
         default:
             return state;
     }
@@ -50,14 +57,33 @@ const ProfileReducer = (state = initialiseState, action) => {
 export const addPostActionCreator = ()=>({ type: ADD_POST })
 export const addUpdateNewPostCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newPostText :text})
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
+export const setStatus = (status) => ({type: SET_USER_STATUS, status})
 
 export const setProfile = (userId) => {
     return (dispatch) =>{
         
-      if(!userId){userId=2}
       usersAPI.getUserProfile(userId).then(data => {
             // debugger;
             dispatch(setUserProfile(data));
+        });
+}}
+
+export const setUserStatus = (userId) => {
+    return (dispatch) =>{
+        
+      profileAPI.getUserStatus(userId).then(data => {
+            // debugger;
+            dispatch(setStatus(data));
+        });
+}}
+
+export const updateUserStatus = (status) => {
+    return (dispatch) =>{
+
+      profileAPI.updateStatuse(status).then(data => {
+            if(data.data.resultCode === 0){
+                dispatch(setStatus(status));
+            }
         });
 }}
     
