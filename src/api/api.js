@@ -5,7 +5,7 @@ import * as axios from 'axios';
 const instence = axios.create({
     withCredentials: true,
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
-    headers: {"API-KEY" : "44b40fd4-f420-412e-b9db-9e53c005b988"}
+    headers: {"API-KEY" : "1203fa1f-c9a4-43f5-bca3-2e2f29d0227d"}
 });
 
 export const usersAPI = {
@@ -67,6 +67,10 @@ export const profileAPI = {
         {
             status: status
         })
+        .then (response => {
+            return response.data;
+        })
+        
     },
     // getUserStatus (id){
     //     return instence.get(`profile/status/${id}`);
