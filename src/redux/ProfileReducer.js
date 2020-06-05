@@ -14,7 +14,6 @@ let initialiseState = {
         { id: 4, likes: 65, post: "The following toolchains offer more flexibility and choice."},
         { id: 5, likes: 3, post: "We recommend them to more experienced users" },
       ],
-      newPostText: 'some test from state',
       profile: null,
       status: ''
 }
@@ -24,17 +23,16 @@ const ProfileReducer = (state = initialiseState, action) => {
             let newPost = {
                 id: 6,
                 likes: 0,
-                post: state.newPostText}
+                post: action.text}
             return{
                 ...state,
                 posts: [...state.posts, newPost],
-                newPostText: ''
             };
-        case UPDATE_NEW_POST_TEXT:
-            return{
-                ...state,
-                newPostText: action.newPostText
-            };
+        // case UPDATE_NEW_POST_TEXT:
+        //     return{
+        //         ...state,
+        //         newPostText: action.newPostText
+        //     };
         case SET_USER_PROFILE:
             return{
                 ...state,
@@ -54,7 +52,7 @@ const ProfileReducer = (state = initialiseState, action) => {
     
 }
 
-export const addPostActionCreator = ()=>({ type: ADD_POST })
+export const addPostActionCreator = (text)=>({ type: ADD_POST , text})
 export const addUpdateNewPostCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newPostText :text})
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const setStatus = (status) => ({type: SET_USER_STATUS, status})

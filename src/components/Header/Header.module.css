@@ -25,3 +25,10 @@
   border-radius: 5px;
   object-fit: cover;
 }
+
+.loginBlock span{
+  padding-left: 30px;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+}

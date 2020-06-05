@@ -1,8 +1,25 @@
 import React from "react";
 import classes from "./MyPosts.module.css";
 import Post from "./Post/Post";
-import {addPostActionCreator, addUpdateNewPostCreator} from './../../../redux/ProfileReducer'
+import { Field, reduxForm } from 'redux-form';
 
+
+
+
+const MyPostsMessageForm = (props) => {
+  return(
+    <form onSubmit={props.handleSubmit}>
+      <Field component={'textarea'} name={'textInput'}></Field>
+      <div>
+        <button>Add Post</button>
+        {/* <button>Remove</button> */}
+      </div>
+
+    </form>
+  )
+}
+
+const MyPostsReduxMessageForm = reduxForm({form: "myPosts"})(MyPostsMessageForm)
 
 const MyPosts = (props) => {
   // let postData = [
@@ -32,10 +49,16 @@ const MyPosts = (props) => {
 
   }
 
+  const onSubmit = (formData) =>{
+    // alert(formData.textInput);
+    props.addPost(formData.textInput);
+  }
+
   return (
     <div className={classes.postBlock}>
       <h3>My posts</h3>
-      <div>
+      <MyPostsReduxMessageForm onSubmit={onSubmit}/>
+      {/* <div>
         <div>
           <textarea onChange={onPostChange} ref={newPostRef} value={props.newPostText}/>
         </div>
@@ -43,7 +66,7 @@ const MyPosts = (props) => {
           <button onClick={onAddPost}>Add Post</button>
           <button>Remove</button>
         </div>
-      </div>
+      </div> */}
       <div>{postItem}</div>
     </div>
   );
