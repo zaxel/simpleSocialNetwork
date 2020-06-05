@@ -1,11 +1,24 @@
 import React from "react";
 import classes from "./MessageSection.module.css";
 import Messages from "./Messages/Messages";
-// import MessageSectionContainer from "./MessageSectionContainer";
-import MessageSectionContainer from "react-redux";
+import { reduxForm, Field } from "redux-form";
 
 
+const MessageSectionForm = (props) => {
+  return(
+    <form onSubmit={props.handleSubmit}>
+      <div>
+          <Field component={'textarea'}  name={'message'}/>
+        </div>
+        <div>
+          <button>Add Post</button>
+          {/* <button>Remove</button> */}
+        </div>
+    </form>
+  )
+}
 
+const MessageSectionReduxForm = reduxForm({form: 'MessageSectionForm'})(MessageSectionForm);
 
 const MessageSection = (props) => {
 
@@ -14,34 +27,15 @@ const MessageSection = (props) => {
     <Messages message={post.message} />
   ));
   
-  
-  let onSendMessageClick = ()=>{
-    props.onSendMessage();
-    // props.dispatch(addMessageActionCreator());
-    
+  const onSubmit =(formData) =>{
+    // alert(formData.message)
+    props.onSendMessage(formData.message);
   }
-  
-  let onMessageChange = (e) => {
-    let message = e.target.value;
-    // props.dispatch(addUpdateNewMessageCreator(message));
-    props.UpdateNewMessage(message);
-  }
-
-
   return (
     <div className={classes.postBlock}>
       <h3>My Messages</h3>
       <div>{postMessageItem}</div>
-      <div>
-        <div>
-          <textarea onChange={onMessageChange} value={props.newMessageText}/>
-        </div>
-        <div>
-          <button onClick={onSendMessageClick}>Add Post</button>
-          <button>Remove</button>
-        </div>
-      </div>
-      
+      <MessageSectionReduxForm onSubmit={onSubmit}/>
     </div>
   );
 };
