@@ -1,14 +1,18 @@
-import React from "react";
-import classes from "./MessageSection.module.css";
-import Messages from "./Messages/Messages";
-import { reduxForm, Field } from "redux-form";
+import React from 'react';
+import classes from './MessageSection.module.css';
+import Messages from './Messages/Messages';
+import { reduxForm, Field } from 'redux-form';
+import {required, maxLength} from './../../../utils/validators/Validators';
+import {RequiredFieldTextarea} from './../../common/FormsControls/FormsControls';
+
+const maxLength15 = maxLength(15);
 
 
 const MessageSectionForm = (props) => {
   return(
     <form onSubmit={props.handleSubmit}>
       <div>
-          <Field component={'textarea'}  name={'message'}/>
+          <Field component={RequiredFieldTextarea}  name={'message'} validate={[required, maxLength15]}/>
         </div>
         <div>
           <button>Add Post</button>

@@ -1,0 +1,10 @@
+.error{
+  color: red;
+  font-size: 20px;
+  font-weight: bold;
+}
+.warning{
+  color: yellow;
+  font-size: 20px;
+  font-weight: bold;
+}
