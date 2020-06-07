@@ -1,4 +1,4 @@
-import {usersAPI} from './../api/api';
+import {usersAPI, authAPI} from './../api/api';
 
 const SET_USERS_DATA = 'SET-USERS-DATA';
 const SET_USER_PROFILE_LOGO = 'SET-USER-PROFILE-LOGO';
@@ -22,7 +22,6 @@ const AuthReducer = (state = initialiseState, action) => {
             
             ...state, 
             ...action.data,
-            isAuth: true
             
         };
 
@@ -41,16 +40,16 @@ const AuthReducer = (state = initialiseState, action) => {
     }
 }
 
-export const setAuthUserData = (id, login, email)=>({type: SET_USERS_DATA, data : {id, login, email}});
+export const setAuthUserData = (id, login, email, isAuth)=>({type: SET_USERS_DATA, data : {id, login, email, isAuth}});
 export const setUserProfileLogo = (src)=>({type: SET_USER_PROFILE_LOGO, profileIconSrc : src});
 
 export const setUserAuthBlock = () => {
 
     return (dispatch) =>{
-        usersAPI.checkIfLogged().then(data => {
+        authAPI.checkIfLogged().then(data => {
             if(data.resultCode === 0){
               let {id, login, email} = data.data;
-              dispatch(setAuthUserData(id, login, email));
+              dispatch(setAuthUserData(id, login, email, true));
               getUserLogos(id);
             }
             // debugger;
@@ -61,6 +60,30 @@ export const setUserAuthBlock = () => {
               dispatch(setUserProfileLogo(data.photos.small));
             });
           }
+    }
+}
+export const login = (email, pass, remember) => {
+
+    return (dispatch) =>{
+      authAPI.login(email, pass, remember).then(data => {
+            if(data.resultCode === 0){
+              dispatch(setUserAuthBlock());
+            }
+            // debugger;
+          });
+          
+    }
+}
+export const logout = () => {
+
+    return (dispatch) =>{
+      authAPI.logout().then(data => {
+            if(data.resultCode === 0){
+              dispatch(setAuthUserData(null, null, null, false));
+            }
+            // debugger;
+          });
+          
     }
 }
 

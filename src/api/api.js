@@ -30,13 +30,7 @@ export const usersAPI = {
         })
     },
 
-    checkIfLogged (){
-        return instence.get(`auth/me`)
-        .then (response => {
-            return response.data;
-        })
-    },
-
+    
     getUserLogo (id){
         return instence.get(`profile/${id}`)
         .then (response => {
@@ -49,6 +43,7 @@ export const usersAPI = {
         return profileAPI.getUserProfile(id);
     }
 }
+
 export const profileAPI = {
     getUserProfile (id){
         return instence.get(`profile/${id}`)
@@ -71,14 +66,29 @@ export const profileAPI = {
             return response.data;
         })
         
+    }
+}
+export const authAPI = {
+    checkIfLogged (){
+        return instence.get(`auth/me`)
+        .then (response => {
+            return response.data;
+        })
     },
-    // getUserStatus (id){
-    //     return instence.get(`profile/status/${id}`);
-    // },
-    // updateUserStatuse (status){
-    //     return instence.put(`profile/status`, {
-    //         status: status
-    //     });
-    // }
+    login (email, password, rememberMe = false){
+        return instence.post(`auth/login`, {
+            email, password, rememberMe
+        })
+        .then (response => {
+            return response.data;
+        })
+    },
+    logout (){
+        return instence.delete(`auth/login`)
+        .then (response => {
+            return response.data;
+        })
+    },
+
 }
 

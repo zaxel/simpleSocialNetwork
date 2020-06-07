@@ -13,7 +13,7 @@ const Header = (props) => {
               {props.profileIconSrc 
               ? <img src={props.profileIconSrc} alt="user logo"/> 
               : <img src={userLogo} alt="user default photo"/>}
-              <span>Logout</span>
+              <span onClick={props.logout}>Logout</span>
             </> 
           : <NavLink to="/login">Login</NavLink>}
         </div>
