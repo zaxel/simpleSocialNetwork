@@ -6,6 +6,7 @@ import SidebarReducer from './SidebarReducer';
 import UsersReducer from './UsersReducer';
 import AuthReducer from './AuthReducer';
 import { reducer as formReducer } from 'redux-form';
+import AppReducer from './AppReducer';
 
 
 
@@ -15,7 +16,9 @@ let reducersBatch = combineReducers({
     sidebar: SidebarReducer,
     usersPage: UsersReducer,
     auth: AuthReducer,
-    form: formReducer
+    app: AppReducer,
+    form: formReducer,
+    
 });
 
 const store = createStore(reducersBatch, applyMiddleware(thunkMiddleware));

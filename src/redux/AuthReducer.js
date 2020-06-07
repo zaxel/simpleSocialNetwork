@@ -45,24 +45,22 @@ export const setAuthUserData = (id, login, email, isAuth)=>({type: SET_USERS_DAT
 export const setUserProfileLogo = (src)=>({type: SET_USER_PROFILE_LOGO, profileIconSrc : src});
 
 export const setUserAuthBlock = () => {
-
-    return (dispatch) =>{
-        authAPI.checkIfLogged().then(data => {
-            if(data.resultCode === 0){
-              let {id, login, email} = data.data;
-              dispatch(setAuthUserData(id, login, email, true));
-              getUserLogos(id);
-            }
-            // debugger;
-          });
-          const getUserLogos = (id) => {
-            usersAPI.getUserLogo (id)
-            .then(data => {
-              dispatch(setUserProfileLogo(data.photos.small));
-            });
-          }
-    }
-}
+  return (dispatch) => {
+    const getUserLogos = (id) => {
+      usersAPI.getUserLogo(id).then((data) => {
+        dispatch(setUserProfileLogo(data.photos.small));
+      });
+    };
+    return authAPI.checkIfLogged().then((data) => {
+      if (data.resultCode === 0) {
+        let { id, login, email } = data.data;
+        dispatch(setAuthUserData(id, login, email, true));
+        getUserLogos(id);
+      }
+      // debugger;
+    });
+  };
+};
 export const login = (email, pass, remember) => {
 
     return (dispatch) =>{
