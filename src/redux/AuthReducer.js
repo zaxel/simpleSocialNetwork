@@ -1,4 +1,5 @@
 import {usersAPI, authAPI} from './../api/api';
+import {stopSubmit} from 'redux-form';
 
 const SET_USERS_DATA = 'SET-USERS-DATA';
 const SET_USER_PROFILE_LOGO = 'SET-USER-PROFILE-LOGO';
@@ -65,9 +66,15 @@ export const setUserAuthBlock = () => {
 export const login = (email, pass, remember) => {
 
     return (dispatch) =>{
+
+      
       authAPI.login(email, pass, remember).then(data => {
             if(data.resultCode === 0){
               dispatch(setUserAuthBlock());
+            }else{
+              let message = data.messages.length > 0 ? data.messages[0] : 'Some error';
+              {dispatch(stopSubmit('login', {_error: message}))};
+             
             }
             // debugger;
           });
