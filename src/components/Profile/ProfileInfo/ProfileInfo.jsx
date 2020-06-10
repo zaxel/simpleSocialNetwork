@@ -10,6 +10,7 @@ import youtube from './../../../assets/images/socials/youtube.svg';
 import github from './../../../assets/images/socials/github.svg';
 import userPhoto from './../../../assets/images/user.jpg';
 import ProfileStatus from './ProfileStatus';
+import ProfileStatusWithHooks from './ProfileStatusWithHooks';
 
 const ProfileInfo = (props) => {
   if(!props.profile){
@@ -31,7 +32,8 @@ const ProfileInfo = (props) => {
         <div className={classes.userDescrContainer}>
           <div className={classes.userDescr}>
             <div className={classes.userName}>{props.profile.fullName}</div>
-            <ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus}/>
+            {/* <ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus}/> */}
+            <ProfileStatusWithHooks status={props.status} updateUserStatus={props.updateUserStatus}/>
             <div className={classes.userAbout}>{props.profile.aboutMe ? props.profile.aboutMe : 'Some user descriptions here...'}</div>
             <div className={classes.userSocialsContainer}>
               <div className={classes.userWeb}> 
