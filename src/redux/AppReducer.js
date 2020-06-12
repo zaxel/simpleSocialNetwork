@@ -29,15 +29,13 @@ export const initializingSuccess = ()=>({type: SET_INITIALIZING});
 
 export const initializeApp = () => {
 
-    return (dispatch) =>{
+    return async (dispatch) =>{
       let promise = dispatch(setUserAuthBlock());
       // dispatch(somethingElse());
       // dispatch(somethingElse());
 
-      Promise.all([promise])
-        .then(()=>{
+      await Promise.all([promise])
         dispatch(initializingSuccess());
-      });
     }
 }
 

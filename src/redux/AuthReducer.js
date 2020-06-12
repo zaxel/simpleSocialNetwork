@@ -45,52 +45,42 @@ export const setAuthUserData = (id, login, email, isAuth)=>({type: SET_USERS_DAT
 export const setUserProfileLogo = (src)=>({type: SET_USER_PROFILE_LOGO, profileIconSrc : src});
 
 export const setUserAuthBlock = () => {
-  return (dispatch) => {
-    const getUserLogos = (id) => {
-      usersAPI.getUserLogo(id).then((data) => {
+  return async (dispatch) => {
+    const getUserLogos = async (id) => {
+      const data = await usersAPI.getUserLogo(id);
         dispatch(setUserProfileLogo(data.photos.small));
-      });
     };
-    return authAPI.checkIfLogged().then((data) => {
+    const data = await authAPI.checkIfLogged()
       if (data.resultCode === 0) {
         let { id, login, email } = data.data;
         dispatch(setAuthUserData(id, login, email, true));
         getUserLogos(id);
       }
-      // debugger;
-    });
   };
 };
+
 export const login = (email, pass, remember) => {
-
-    return (dispatch) =>{
-
-      
-      authAPI.login(email, pass, remember).then(data => {
-            if(data.resultCode === 0){
-              dispatch(setUserAuthBlock());
-            }else{
-              let message = data.messages.length > 0 ? data.messages[0] : 'Some error';
-              {dispatch(stopSubmit('login', {_error: message}))};
-             
-            }
-            // debugger;
-          });
-          
+  return async (dispatch) => {
+    const data = await authAPI.login(email, pass, remember);
+    if (data.resultCode === 0) {
+      dispatch(setUserAuthBlock());
+    } else {
+      let message = data.messages.length > 0 ? data.messages[0] : "Some error";
+      {
+        dispatch(stopSubmit("login", { _error: message }));
+      }
     }
-}
+  };
+};
+
 export const logout = () => {
-
-    return (dispatch) =>{
-      authAPI.logout().then(data => {
-            if(data.resultCode === 0){
-              dispatch(setAuthUserData(null, null, null, false));
-            }
-            // debugger;
-          });
-          
+  return async (dispatch) => {
+    const data = await authAPI.logout();
+    if (data.resultCode === 0) {
+      dispatch(setAuthUserData(null, null, null, false));
     }
-}
+  };
+};
 
     
 export default AuthReducer;
