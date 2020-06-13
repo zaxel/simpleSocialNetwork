@@ -11,9 +11,11 @@ import Music from "./components/Music/Music";
 import UsersContainer from "./components/Users/UsersContainer";
 import LoginPage from "./components/Login/Login";
 import { compose } from "redux";
-import {connect} from 'react-redux';
+import {connect, Provider} from 'react-redux';
 import {initializeApp} from './redux/AppReducer';
 import Preloader from "./components/common/Preloader/Preloader";
+import {BrowserRouter} from "react-router-dom";
+import store from './redux/ReduxStore';
 
 
 
@@ -54,8 +56,20 @@ const mapStateToProps = (state) =>({
   initialized: state.app.initialized
 });
 
-export default compose(
+const AppContainer = compose(
   withRouter,
   connect(mapStateToProps, {initializeApp}),
   // withAuthRedirect
 )(App);
+
+const SocNetApp = () =>{
+  return <React.StrictMode>
+    <BrowserRouter>
+      <Provider store={store}>
+        <AppContainer store={store} />
+      </Provider>
+    </BrowserRouter>
+  </React.StrictMode>
+}
+
+export default SocNetApp;

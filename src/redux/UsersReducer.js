@@ -28,7 +28,7 @@ let initialiseState = {
         // { userId: 14, followed: true, fullName: "Ben L", status: "Badabum...", location: {country: "Belarus", city: "Minsk" }},
         
       ],
-      pageSize: 100,
+      pageSize: 10,
       totalUsersCount: 0,
       currentPage: 1,
       isFetching: false,
