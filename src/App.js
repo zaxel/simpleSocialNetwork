@@ -4,7 +4,7 @@ import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import {BrowserRouter, Route} from "react-router-dom";
+import {Route, withRouter} from "react-router-dom";
 import Settings from "./components/Settings/Settings";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
@@ -14,6 +14,8 @@ import { compose } from "redux";
 import {connect} from 'react-redux';
 import {initializeApp} from './redux/AppReducer';
 import Preloader from "./components/common/Preloader/Preloader";
+
+
 
 class App extends React.Component {
 
@@ -25,7 +27,7 @@ class App extends React.Component {
     if(!this.props.initialized){return <Preloader/>}
     
     return (
-      <BrowserRouter>
+      // <BrowserRouter>
         <div className="app-wrapper">
           <HeaderContainer />
           <Navbar />
@@ -42,7 +44,7 @@ class App extends React.Component {
             <Route path='/login' render={()=> <LoginPage/>}/>
           </div>
         </div>
-      </BrowserRouter>
+      // </BrowserRouter>
     );
   }
   
@@ -53,6 +55,7 @@ const mapStateToProps = (state) =>({
 });
 
 export default compose(
+  withRouter,
   connect(mapStateToProps, {initializeApp}),
   // withAuthRedirect
 )(App);
