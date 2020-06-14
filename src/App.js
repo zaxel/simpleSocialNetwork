@@ -2,7 +2,7 @@ import React from "react";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
-import {Route, withRouter} from "react-router-dom";
+import {Route, withRouter, HashRouter} from "react-router-dom";
 import UsersContainer from "./components/Users/UsersContainer";
 import LoginPage from "./components/Login/Login";
 import Settings from "./components/Settings/Settings";
@@ -45,7 +45,7 @@ class App extends React.Component {
             path="/dialogs"
             render={withSuspense(DialogsContainer, {store: this.props.store})}
           />
-          <Route path="/news" render={() => <News />} />
+          <Route path="/news" render={withSuspense(News)} />
           <Route path="/music" render={() => <Music />} />
           <Route path="/users" render={() => <UsersContainer />} />
           <Route path="/settings" render={() => <Settings />} />
@@ -70,11 +70,11 @@ const AppContainer = compose(
 
 const SocNetApp = () =>{
   return <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter >
       <Provider store={store}>
         <AppContainer store={store} />
       </Provider>
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>
 }
 
