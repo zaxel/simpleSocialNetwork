@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c9eee3003544d15c171296e6dc18a2f1",
+    "revision": "ab70e97b8903f98260494202a7b8f621",
     "url": "/simpleSocialNetwork/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/simpleSocialNetwork/static/css/3.20ab00a2.chunk.css"
   },
   {
-    "revision": "848b88592ff4538d0a2f",
+    "revision": "b4fa52c44e6adb2f04e0",
     "url": "/simpleSocialNetwork/static/css/4.814989c7.chunk.css"
   },
   {
@@ -16,36 +16,36 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/simpleSocialNetwork/static/css/5.25b44a53.chunk.css"
   },
   {
-    "revision": "18602719d10062a70439",
+    "revision": "a51abe28a8d4724cc472",
     "url": "/simpleSocialNetwork/static/css/main.8894857e.chunk.css"
   },
   {
-    "revision": "41a4ba86bb11d6be3f1e",
-    "url": "/simpleSocialNetwork/static/js/2.64860f5b.chunk.js"
+    "revision": "6d63a3a404be21e00edd",
+    "url": "/simpleSocialNetwork/static/js/2.ffc042ce.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/simpleSocialNetwork/static/js/2.64860f5b.chunk.js.LICENSE.txt"
+    "url": "/simpleSocialNetwork/static/js/2.ffc042ce.chunk.js.LICENSE.txt"
   },
   {
     "revision": "9c1919b94509dc3c506d",
     "url": "/simpleSocialNetwork/static/js/3.2920800d.chunk.js"
   },
   {
-    "revision": "848b88592ff4538d0a2f",
-    "url": "/simpleSocialNetwork/static/js/4.54bbe1bb.chunk.js"
+    "revision": "b4fa52c44e6adb2f04e0",
+    "url": "/simpleSocialNetwork/static/js/4.e147f651.chunk.js"
   },
   {
     "revision": "f091a69945115e1efc7d",
     "url": "/simpleSocialNetwork/static/js/5.d1fb6029.chunk.js"
   },
   {
-    "revision": "18602719d10062a70439",
-    "url": "/simpleSocialNetwork/static/js/main.3203a756.chunk.js"
+    "revision": "a51abe28a8d4724cc472",
+    "url": "/simpleSocialNetwork/static/js/main.b31b957e.chunk.js"
   },
   {
-    "revision": "7ae2b18fdc590a8908f2",
-    "url": "/simpleSocialNetwork/static/js/runtime-main.86bd6ecf.js"
+    "revision": "709ce465ec7ff811e8a8",
+    "url": "/simpleSocialNetwork/static/js/runtime-main.b0131b52.js"
   },
   {
     "revision": "53757d9306796cd8c19df677d30a10c7",
