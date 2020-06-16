@@ -79,6 +79,13 @@ export const profileAPI = {
         .then (response => {
             return response.data;
         })
+    },
+
+    updateProfile (profile){
+        return instence.put(`profile`, profile)
+        .then (response => {
+            return response.data;
+        })
     }
 }
 export const authAPI = {

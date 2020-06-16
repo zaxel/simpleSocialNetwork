@@ -10,7 +10,7 @@ import youtube from './../../../assets/images/socials/youtube.svg';
 import github from './../../../assets/images/socials/github.svg';
 import userPhoto from './../../../assets/images/user.jpg';
 import ProfileStatus from './ProfileStatus';
-import ProfileStatusWithHooks from './ProfileStatusWithHooks';
+import ProfileDescription from './ProfileDescription';
 
 const ProfileInfo = (props) => {
   if(!props.profile){
@@ -37,10 +37,33 @@ const ProfileInfo = (props) => {
         </div>
         <div className={classes.userDescrContainer}>
           <div className={classes.userDescr}>
-            <div className={classes.userName}>{props.profile.fullName}</div>
+
+
+
+
+            {/* <div className={classes.userName}>{props.profile.fullName}</div> */}
+            <div className={classes.userName}>
+            {<ProfileDescription profile={props.profile} 
+            updateProfile={props.updateProfile} 
+            isOwner={props.isOwner}
+            authorizedUserId={props.authorizedUserId}
+            />}</div>
+
+
+
+
+
             {/* <ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus}/> */}
-            <ProfileStatusWithHooks status={props.status} updateUserStatus={props.updateUserStatus}/>
+            
+            
+            <ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus} isOwner={props.isOwner} />
+
             <div className={classes.userAbout}>{props.profile.aboutMe ? props.profile.aboutMe : 'Some user descriptions here...'}</div>
+            
+            
+            {/* <div className={classes.userAbout}>{props.profile.aboutMe ? <ProfileDescription {...props}/> : 'Some user descriptions here...'}</div> */}
+
+
             <div className={classes.userSocialsContainer}>
               <div className={classes.userWeb}> 
                 WebSite: {props.profile.contacts.website ? <a href={props.profile.contacts.website}>{props.profile.contacts.website}</a> : 'No'}
