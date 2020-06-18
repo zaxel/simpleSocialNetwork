@@ -20,10 +20,10 @@ export const RenderFieldInput = ({input, type, meta: { touched, error, warning }
   </div>
 )
  
-export const CreateField =(placeholder, component, validate, name, type ={}, text ='') => {
+export const CreateField =(placeholder, component, validate, name, type ={}, warn=null, text ='' ) => {
   return(
     <div>
-      <Field placeholder={placeholder} component={component} validate={validate} name={name} type={type}/>{text}
+      <Field placeholder={placeholder} component={component} validate={validate} name={name} type={type} warn={warn}/>{text}
     </div>
   )
 }

@@ -9,6 +9,10 @@
 }
 .userPhoto{
     flex: 0 0 15%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
     
 }
 .userPhoto img{
@@ -62,4 +66,7 @@ hr{
     height: 2px;
     margin: 20px;
     background: white;
+}
+.editProfile button{
+    margin-top: 80px;
 }

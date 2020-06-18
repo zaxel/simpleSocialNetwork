@@ -14,7 +14,7 @@ const LoginForm = ({handleSubmit, error}) =>{
         <form onSubmit={handleSubmit}>
             {CreateField('email', RenderFieldInput, [required, maxLength25], 'email')}
             {CreateField('password', RenderFieldInput, [required, maxLength25], 'pass', 'password')}
-            {CreateField(null, 'input', [], 'rememberMe', 'checkbox', 'remember me')}
+            {CreateField(null, 'input', [], 'rememberMe', 'checkbox', null, 'remember me')}
             
             {error && <div className={classes.error}> {error} </div>}
             <div>
@@ -50,4 +50,4 @@ const mapStateToProps = (state) =>({
     isAuth: state.auth.isAuth,
 });
 
-export default connect(mapStateToProps, {login, logout}) (Login);
+export default connect(mapStateToProps, {login}) (Login);

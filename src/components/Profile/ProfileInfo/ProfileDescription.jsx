@@ -1,71 +1,75 @@
 import React, { useState, useEffect } from 'react';
 import classes from "./ProfileInfo.module.css";
+import facebook from './../../../assets/images/socials/facebook.svg';
+import vk from './../../../assets/images/socials/vk.svg';
+import twitter from './../../../assets/images/socials/twitter.svg';
+import instagram from './../../../assets/images/socials/instagram.svg';
+import youtube from './../../../assets/images/socials/youtube.svg';
+import github from './../../../assets/images/socials/github.svg';
+import ProfileStatus from './ProfileStatus';
 
 const ProfileDescription =(props) => {
 
-  //  let stateWithSetState = useState(false);
-  //  let editMode = stateWithSetState[0];
-  //  let setEditMode = stateWithSetState[1];
-  // **Same as below
-
-  let [editMode, setEditMode] = useState(false);
-  let [profile, setProfile] = useState(props.profile);
+ 
   
-  let userId = props.authorizedUserId;
-
-  useEffect(()=>{
-    setProfile(props.profile)
-  }, [props.profile]);
-
-  const activateEditMode = () => {
-    props.isOwner && setEditMode(true);
-  };
-  
-  const deActivateEditMode = () => {
-    setEditMode(false);
-    const profileObject = {
-      userId,
-      aboutMe: "я некруто чувак 1001%",
-      contacts: {
-          facebook: "facebook.com",
-          github: "github.com",
-          instagram: "instagra.com/sds",
-          mainLink: null,
-          twitter: "https://twitter.com/@sdf",
-          vk: "vk.com/dimych",
-          website: null,
-          youtube: null
-      },
-      lookingForAJob: true,
-      lookingForAJobDescription: "не ищу but making fun",
-      fullName: profile
-
-      
-    }
-    props.updateProfile(profileObject);
-  }
-
-  const onStatusChange = (e) => {
-    setProfile(e.currentTarget.value)
-      
-  }
-  
+  return( 
+  <>
+  <div className={classes.userDescr}>
 
 
-  
-  return(
-    <>
-    {!editMode &&
-      <div >
-        <span onClick={activateEditMode}>{props.profile.fullName || "----"}</span>
-      </div>
-    }
-    {editMode &&
-      <div >
-        <input onChange={onStatusChange} value={profile.fullName}   autoFocus={true} onBlur={deActivateEditMode}/>
-      </div>
-    }
-    </>
+            
+
+            <div className={classes.userName}>{props.profile.fullName}</div>
+            {/* <div className={classes.userName}>
+            {<ProfileDescription profile={props.profile} 
+            updateProfile={props.updateProfile} 
+            isOwner={props.isOwner}
+            authorizedUserId={props.authorizedUserId}
+            />}</div> */}
+
+
+
+
+
+            {/* <ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus}/> */}
+            
+            
+            <ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus} isOwner={props.isOwner} />
+
+            <div className={classes.userAbout}>{props.profile.aboutMe ? props.profile.aboutMe : 'Some user descriptions here...'}</div>
+            
+            
+            {/* <div className={classes.userAbout}>{props.profile.aboutMe ? <ProfileDescription {...props}/> : 'Some user descriptions here...'}</div> */}
+
+
+            <div className={classes.userSocialsContainer}>
+              <div className={classes.userWeb}> 
+                WebSite: {props.profile.contacts.website ? <a href={props.profile.contacts.website}>{props.profile.contacts.website}</a> : 'No'}
+              </div>
+              <div className={classes.userLink}> 
+                MainLink: {props.profile.contacts.mainLink ? <a href={props.profile.contacts.mainLink}>{props.profile.contacts.mainLink}</a> : 'No'}
+              </div>
+              <div className={classes.userSocials}>
+                {props.profile.contacts.facebook ? <a href={props.profile.contacts.facebook}><img src={facebook}/></a> : null}
+                {props.profile.contacts.vk ? <a href={props.profile.contacts.vk}><img src={vk}/></a> : null}
+                {props.profile.contacts.twitter ? <a href={props.profile.contacts.twitter}><img src={twitter}/></a> : null}
+                {props.profile.contacts.instagram ? <a href={props.profile.contacts.instagram}><img src={instagram}/></a> : null}
+                {props.profile.contacts.youtube ? <a href={props.profile.contacts.youtube}><img src={youtube}/></a> : null}
+                {props.profile.contacts.github ? <a href={props.profile.contacts.github}><img src={github}/></a> : null}
+              </div>
+            </div>
+          </div>
+          <div className={classes.userJobsSearchBlock}>
+            <div className={classes.userJobsSearch}>Looking for the job: 
+              {props.profile.lookingForAJob ? 'YES' : 'NO'}
+            </div>
+            <div className={classes.userJobsSearchDescr}>Descriptions: 
+              {props.profile.lookingForAJobDescription 
+              ? props.profile.lookingForAJobDescription 
+              : 'No descriptions added yet'}
+            </div>
+          </div>
+     </>   
   );
   
 }
