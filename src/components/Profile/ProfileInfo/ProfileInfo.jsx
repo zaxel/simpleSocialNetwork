@@ -30,9 +30,23 @@ const ProfileInfo = (props) => {
   
   const deActivateProfileEditMode = () => {
     setEditProfileMode(false);
-    
     // props.updateUserStatus(status);
   }
+
+  const initialValues = {
+    aboutMe: props.profile.aboutMe,
+    facebook: props.profile.contacts.facebook,
+    gitHub: props.profile.contacts.github,
+    instagram: props.profile.contacts.instagram,
+    mainLink: props.profile.contacts.mainLink,
+    twitter: props.profile.contacts.twitter,
+    vK: props.profile.contacts.vk,
+    webSite: props.profile.contacts.website,
+    youtube: props.profile.contacts.youtube,
+    lookingForAJob: props.profile.lookingForAJob,
+    jobDescription: props.profile.lookingForAJobDescription,
+    userName: props.profile.fullName,
+  };
 
 
   return (
@@ -55,9 +69,8 @@ const ProfileInfo = (props) => {
             )}
           </div>
           <div className={classes.editProfile}>
-          {(props.isOwner && !editProfileMode) ?
-            <button onClick={activateEditProfileMode}>edit profile</button> :
-            props.isOwner && <button onClick={deActivateProfileEditMode}>save profile</button>}
+          {(props.isOwner && !editProfileMode) &&
+            <button onClick={activateEditProfileMode}>edit profile</button>}
           </div>
         </div>
 
@@ -75,8 +88,8 @@ const ProfileInfo = (props) => {
           authorizedUserId={props.authorizedUserId} 
           updateProfile={props.updateProfile}
           isOwner={props.isOwner}
-          deActivateProfileEditMode={props.deActivateProfileEditMode}
-
+          deActivateProfileEditMode={deActivateProfileEditMode}
+          initialValues={initialValues}
           />}
         </div>
       </div>

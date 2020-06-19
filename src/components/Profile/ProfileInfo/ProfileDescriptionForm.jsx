@@ -10,10 +10,10 @@ const maxLength20 = maxLength(20);
 const maxLength200 = maxLength(200);
 const minLeight5 = minLength(5);
 
-const ProfileForm = (props, {handleSubmit, error}) => {
+const ProfileForm = ({handleSubmit}) => {
   
   return(
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} >
       <div>Name:</div>
       {CreateField('NAME', RenderFieldInput, [required, minLeight5, maxLength20], 'userName', 'text', alphaNumeric)}
       <div>About me:</div>
@@ -42,7 +42,7 @@ const ProfileForm = (props, {handleSubmit, error}) => {
       <div>Job Description:</div>
       {CreateField('Job Description', RequiredFieldTextarea, [minLeight5, maxLength200], 'jobDescription', 'text', null)}
       <div>
-                <button onClick={props.deActivateProfileEditMode}>SAVE PROFILE</button>
+                <button >SAVE PROFILE</button>
             </div>
     </form>
   );
@@ -54,8 +54,9 @@ const ProfileReduxForm = reduxForm({form: "profile"})(ProfileForm);
 const ProfileDescriptionForm =(props) => {
   const onSubmit = (formData) =>{
     let userId = props.authorizedUserId;
-    console.log(formData);
+    // console.log(formData);
     // if(formData)
+    
     const profileObject = {
       userId,
       aboutMe: (formData.aboutMe ? formData.aboutMe : "some user description here"),
@@ -76,10 +77,13 @@ const ProfileDescriptionForm =(props) => {
       
     }
     props.updateProfile(profileObject);
+     props.deActivateProfileEditMode();
   }
   return(
     <>
-      <ProfileReduxForm onSubmit={onSubmit}/>
+      <ProfileReduxForm onSubmit={onSubmit}
+        initialValues={props.initialValues}
+      />
     </>
   );
   
