@@ -63,7 +63,7 @@ export const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos})
 
 export const setProfile = (userId) => {
     return async (dispatch) =>{
-      const data = await usersAPI.getUserProfile(userId);
+      const data = await profileAPI.getUserProfile(userId);
             dispatch(setUserProfile(data));
 }}
 

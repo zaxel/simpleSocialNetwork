@@ -10,7 +10,7 @@ const maxLength20 = maxLength(20);
 const maxLength200 = maxLength(200);
 const minLeight5 = minLength(5);
 
-const ProfileForm = ({handleSubmit, error}) => {
+const ProfileForm = (props, {handleSubmit, error}) => {
   
   return(
     <form onSubmit={handleSubmit}>
@@ -42,34 +42,36 @@ const ProfileForm = ({handleSubmit, error}) => {
       <div>Job Description:</div>
       {CreateField('Job Description', RequiredFieldTextarea, [minLeight5, maxLength200], 'jobDescription', 'text', null)}
       <div>
-                <button>LOGIN</button>
+                <button onClick={props.deActivateProfileEditMode}>SAVE PROFILE</button>
             </div>
     </form>
   );
 }
 
 
-const ProfileReduxForm = reduxForm({form: "profile"})(ProfileForm)
+const ProfileReduxForm = reduxForm({form: "profile"})(ProfileForm);
+
 const ProfileDescriptionForm =(props) => {
   const onSubmit = (formData) =>{
+    let userId = props.authorizedUserId;
     console.log(formData);
     // if(formData)
     const profileObject = {
-      userId: 8494,
-      aboutMe: "1001 dalmats iiii",
+      userId,
+      aboutMe: (formData.aboutMe ? formData.aboutMe : "some user description here"),
       contacts: {
-          facebook: "facebook.com",
-          github: "github.com",
-          instagram: "instagra.com/sds",
-          mainLink: null,
-          twitter: "https://twitter.com/@sdf",
-          vk: "vk.com/dimych",
-          website: null,
-          youtube: null
+          facebook: formData.facebook,
+          github: formData.gitHub,
+          instagram: formData.instagram,
+          mainLink: formData.mainLink,
+          twitter: formData.twitter,
+          vk: formData.vK,
+          website: formData.webSite,
+          youtube: formData.youtube
       },
-      lookingForAJob: true,
-      lookingForAJobDescription: "fucki",
-      fullName: 'Burko'
+      lookingForAJob: (formData.lookingForAJob ? formData.lookingForAJob : false),
+      lookingForAJobDescription: (formData.jobDescription ? formData.jobDescription : "----"),
+      fullName: formData.userName
 
       
     }
@@ -82,10 +84,7 @@ const ProfileDescriptionForm =(props) => {
   );
   
 }
-// export default ProfileDescriptionForm;
 
-const mapStateToProps = (state) =>({
-  // isAuth: state.auth.isAuth,
-});
 
-export default connect(mapStateToProps, {updateProfile}) (ProfileDescriptionForm);
+
+export default ProfileDescriptionForm;

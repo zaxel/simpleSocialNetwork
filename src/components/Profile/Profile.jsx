@@ -16,6 +16,8 @@ const Profile = (props) => {
         savePhoto={props.savePhoto}
         updateProfile={props.updateProfile}
         authorizedUserId={props.authorizedUserId}
+        activateEditProfileMode={props.activateEditProfileMode}
+        deActivateProfileEditMode={props.deActivateProfileEditMode}
         />
         
       <MyPostsContainer store={props.store}/>

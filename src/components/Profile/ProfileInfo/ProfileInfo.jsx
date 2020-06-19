@@ -71,7 +71,13 @@ const ProfileInfo = (props) => {
             updateProfile={props.updateProfile}
             authorizedUserId={props.authorizedUserId}
           /> :
-          <ProfileDescriptionForm/>}
+          <ProfileDescriptionForm 
+          authorizedUserId={props.authorizedUserId} 
+          updateProfile={props.updateProfile}
+          isOwner={props.isOwner}
+          deActivateProfileEditMode={props.deActivateProfileEditMode}
+
+          />}
         </div>
       </div>
       <hr />
