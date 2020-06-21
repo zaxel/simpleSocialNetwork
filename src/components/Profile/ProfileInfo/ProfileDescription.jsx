@@ -20,12 +20,7 @@ const ProfileDescription =(props) => {
             
 
             <div className={classes.userName}>{props.profile.fullName}</div>
-            {/* <div className={classes.userName}>
-            {<ProfileDescription profile={props.profile} 
-            updateProfile={props.updateProfile} 
-            isOwner={props.isOwner}
-            authorizedUserId={props.authorizedUserId}
-            />}</div> */}
+            
 
 
 

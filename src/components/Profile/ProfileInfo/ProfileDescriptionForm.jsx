@@ -4,7 +4,6 @@ import { Field, reduxForm } from 'redux-form';
 import {RequiredFieldTextarea, RenderFieldInput, CreateField} from './../../common/FormsControls/FormsControls';
 import {required, minLength, maxLength, /*isUrlValid*/ alphaNumeric} from './../../../utils/validators/Validators';
 import classes from "./ProfileInfo.module.css";
-import {updateProfile} from "./../../../redux/ProfileReducer"
 
 const maxLength20 = maxLength(20);
 const maxLength200 = maxLength(200);
@@ -55,9 +54,6 @@ const ProfileReduxForm = reduxForm({form: "profile"})(ProfileForm);
 const ProfileDescriptionForm =(props) => {
   const onSubmit = (formData) =>{
     let userId = props.authorizedUserId;
-    // console.log(formData);
-    // if(formData)
-    
     const profileObject = {
       userId,
       aboutMe: (formData.aboutMe ? formData.aboutMe : "some user description here"),
@@ -72,17 +68,16 @@ const ProfileDescriptionForm =(props) => {
           youtube: formData.youtube
       },
       lookingForAJob: (formData.lookingForAJob ? formData.lookingForAJob : false),
-      lookingForAJobDescription: (formData.lookingForAJobDescription ? formData.lookingForAJobDescription : "----"),
+      lookingForAJobDescription: (formData.lookingForAJobDescription ? formData.lookingForAJobDescription : "-----"),
       fullName: formData.fullName
 
       
     }
-    props.updateProfile(profileObject);
-    if(props.isProfileChangeSuccess){
-      props.deActivateProfileEditMode();
-      props.saveProfileChangeSuccess(false);
-
-    }
+    
+    props.updateProfile(profileObject).then(()=>{
+        props.deActivateProfileEditMode();
+    })
+    
   }
   return(
     <>

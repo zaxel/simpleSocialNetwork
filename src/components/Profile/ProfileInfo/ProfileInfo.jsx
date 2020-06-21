@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect} from 'react';
 import classes from "./ProfileInfo.module.css";
 import Preloader from './../../common/Preloader/Preloader';
 import profileHeader from './../../../assets/images/profileHeader.jpg';
@@ -81,7 +81,6 @@ const ProfileInfo = (props) => {
             status={props.status}
             updateUserStatus={props.updateUserStatus}
             savePhoto={props.savePhoto}
-            updateProfile={props.updateProfile}
             authorizedUserId={props.authorizedUserId}
           /> :
           <ProfileDescriptionForm 
@@ -90,8 +89,6 @@ const ProfileInfo = (props) => {
           isOwner={props.isOwner}
           deActivateProfileEditMode={deActivateProfileEditMode}
           initialValues={initialValues}
-          isProfileChangeSuccess={props.isProfileChangeSuccess}
-          saveProfileChangeSuccess={props.saveProfileChangeSuccess}
           />}
         </div>
       </div>

@@ -18,8 +18,6 @@ const Profile = (props) => {
         authorizedUserId={props.authorizedUserId}
         activateEditProfileMode={props.activateEditProfileMode}
         deActivateProfileEditMode={props.deActivateProfileEditMode}
-        isProfileChangeSuccess={props.isProfileChangeSuccess}
-        saveProfileChangeSuccess={props.saveProfileChangeSuccess}
         />
         
       <MyPostsContainer store={props.store}/>

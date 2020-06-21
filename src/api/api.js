@@ -81,7 +81,7 @@ export const profileAPI = {
         })
     },
 
-    updateProfile (profile){
+    updateUserProfile (profile){
         return instence.put(`profile`, profile)
         .then (response => {
             return response.data;
