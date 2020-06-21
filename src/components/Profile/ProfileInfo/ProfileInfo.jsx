@@ -36,16 +36,16 @@ const ProfileInfo = (props) => {
   const initialValues = {
     aboutMe: props.profile.aboutMe,
     facebook: props.profile.contacts.facebook,
-    gitHub: props.profile.contacts.github,
+    github: props.profile.contacts.github,
     instagram: props.profile.contacts.instagram,
     mainLink: props.profile.contacts.mainLink,
     twitter: props.profile.contacts.twitter,
-    vK: props.profile.contacts.vk,
-    webSite: props.profile.contacts.website,
+    vk: props.profile.contacts.vk,
+    website: props.profile.contacts.website,
     youtube: props.profile.contacts.youtube,
     lookingForAJob: props.profile.lookingForAJob,
-    jobDescription: props.profile.lookingForAJobDescription,
-    userName: props.profile.fullName,
+    lookingForAJobDescription: props.profile.lookingForAJobDescription,
+    fullName: props.profile.fullName,
   };
 
 
@@ -90,6 +90,8 @@ const ProfileInfo = (props) => {
           isOwner={props.isOwner}
           deActivateProfileEditMode={deActivateProfileEditMode}
           initialValues={initialValues}
+          isProfileChangeSuccess={props.isProfileChangeSuccess}
+          saveProfileChangeSuccess={props.saveProfileChangeSuccess}
           />}
         </div>
       </div>

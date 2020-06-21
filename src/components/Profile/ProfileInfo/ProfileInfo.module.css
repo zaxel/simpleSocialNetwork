@@ -70,3 +70,7 @@ hr{
 .editProfile button{
     margin-top: 80px;
 }
+.error{
+    color: red;
+    font-weight: bold;
+}

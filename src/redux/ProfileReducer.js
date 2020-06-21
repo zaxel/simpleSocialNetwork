@@ -1,4 +1,5 @@
 import {usersAPI, profileAPI} from './../api/api';
+import {stopSubmit} from 'redux-form';
 
 const ADD_POST = 'ADD-POST';
 const DELETE_POST = 'DELETE-POST';
@@ -6,6 +7,7 @@ const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const SET_USER_STATUS = 'SET-USER-STATUS';
 const SAVE_PHOTO_SUCCESS = 'SAVE-PHOTO-SUCCESS';
+const PROFILE_CHANGE_SUCCESS = 'PROFILE-CHANGE-SUCCESS';
 
 let initialiseState = {
     posts: [
@@ -16,7 +18,8 @@ let initialiseState = {
         { id: 5, likes: 3, post: "We recommend them to more experienced users" },
       ],
       profile: null,
-      status: ''
+      status: '',
+      profileChangeSuccess: false
 }
 const ProfileReducer = (state = initialiseState, action) => {
     switch(action.type){
@@ -49,6 +52,11 @@ const ProfileReducer = (state = initialiseState, action) => {
                 ...state,
                 profile: {...state.profile, photos: action.photos},
             };
+        case PROFILE_CHANGE_SUCCESS:
+            return{
+                ...state,
+                profileChangeSuccess: action.profileChangeSuccess
+            };
         default:
             return state;
     }
@@ -60,6 +68,7 @@ export const addUpdateNewPostCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, n
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 export const setStatus = (status) => ({type: SET_USER_STATUS, status})
 export const savePhotoSuccess = (photos) => ({type: SAVE_PHOTO_SUCCESS, photos})
+export const saveProfileChangeSuccess = (profileChangeSuccess) => ({type: PROFILE_CHANGE_SUCCESS, profileChangeSuccess})
 
 export const setProfile = (userId) => {
     return async (dispatch) =>{
@@ -97,8 +106,42 @@ export const updateProfile = (profile) => {
     return async (dispatch) =>{
     const data = await profileAPI.updateProfile(profile);
         if(data.resultCode === 0){
+            dispatch(saveProfileChangeSuccess(true));
             dispatch(setProfile(profile.userId));
+        }else {
+            dispatch(saveProfileChangeSuccess(false));
+        let message = data.messages.length > 0 ? data.messages[0] : "Some error";
+        {
+            if(message.includes('Invalid url format')){
+                const errorContact = errorChecker(profile.contacts, message);
+                dispatch(stopSubmit("profile", {[errorContact]: message}));
+            }else{
+                dispatch(stopSubmit("profile", { _error: message }));
+            }
         }
-} } 
+} } }
     
+const errorChecker = (contacts, errorMessage) => {
+        const contactWithErrorMessage = errorMessage.substring(0, errorMessage.length - 1).split('->')[1];
+        console.log(contactWithErrorMessage);
+        console.log(errorMessage);
+        if (Object.keys(contacts).length > 0){
+            const contactsArrey = Object.keys(contacts);
+            const contactWithError = contactsArrey.find(contact => 
+                contact.charAt(0).toUpperCase() + contact.slice(1) == contactWithErrorMessage)
+             console.log(contactWithError);
+             return contactWithError;
+        }
+  };
+
+
+
+  // const contacts = contacts.map(contact => contact.id);
+
+  //    const socNetworks = profile.map(function(soc){
+  //         return socNetworks
+  //     });
+  // console.log(errorChecker);
+
+
 export default ProfileReducer;
