@@ -95,9 +95,9 @@ export const authAPI = {
             return response.data;
         })
     },
-    login (email, password, rememberMe = false){
+    login (email, password, rememberMe = false, captcha = null){
         return instence.post(`auth/login`, {
-            email, password, rememberMe
+            email, password, rememberMe, captcha
         })
         .then (response => {
             return response.data;
@@ -109,6 +109,16 @@ export const authAPI = {
             return response.data;
         })
     },
+
+}
+export const securityAPI = {
+    getCaptchaUrl (){
+        return instence.get(`security/get-captcha-url`)
+        .then (response => {
+            return response.data;
+        })
+    }
+    
 
 }
 
