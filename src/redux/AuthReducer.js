@@ -75,6 +75,7 @@ export const login = (email, pass, remember, captchaInput) => {
     const data = await authAPI.login(email, pass, remember, captchaInput);
     if (data.resultCode === 0) {
       dispatch(setUserAuthBlock());
+      dispatch(getCaptchaUrlSaccess(null));
     } else {
       if (data.resultCode === 10){
         dispatch(getCaptchaUrl());
