@@ -1,12 +1,21 @@
 .nav{
   grid-area: n;
-  background: brown;
+  background: #EDEEF0;
   padding: 20px;
 }
+.item{
+  padding: 10px 0;
+}
 .item a{
-  color: white;
+  color: #656565;
   text-decoration: none;
+  font-family: Oxygen;
+  font-size: 18px;
+}
+.item a:hover{
+  text-decoration: underline;
 }
 .item a.activeLink{
-  color: gold;
+  text-decoration: underline;
+  outline: none;
 }

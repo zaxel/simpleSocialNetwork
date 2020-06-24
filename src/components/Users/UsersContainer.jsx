@@ -6,6 +6,7 @@ import Preloader from './../common/Preloader/Preloader';
 import { compose } from 'redux';
 import {getUsersSelector, getPageSize, getTotalUsersCount, 
     getCurrentPage, getIsFetching, getIsFollowingInProgress} from './../../redux/UsersSelectors';
+    import classes from './Users.module.css'
 
 
 class UsersContainer extends React.Component {
@@ -21,9 +22,9 @@ class UsersContainer extends React.Component {
     }
 
     render (){
-        return <>
+        return <div className={classes.usersContainer}>
        {this.props.isFetching ? <Preloader/> : null}
-        <Users totalUsersCount={this.props.totalUsersCount}
+        <Users className={classes.userCardGeneral} totalUsersCount={this.props.totalUsersCount}
                 pageSize={this.props.pageSize}
                 currentPage={this.props.currentPage}
                 onPageChanged={this.onPageChanged}
@@ -33,7 +34,7 @@ class UsersContainer extends React.Component {
                 // toggleFollowingInProgress={this.props.toggleFollowingInProgress}
                 isFollowingInProgress={this.props.isFollowingInProgress}
                 /> 
-           </>
+           </div>
     }
 }
 

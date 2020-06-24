@@ -1,44 +1,61 @@
+.usersContainer{
+  background: #EDEEF0;
+  padding: 20px;
+  
+}
+.userCardUnderline{
+  border: 1px solid #EDEEF0;
+  padding: 0;
+  margin: 0;
+}
 
 .item{
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
-  color: aqua;
-  padding: 10px 50px;
+  color: #000;
+  background: white;
+  box-sizing: border-box;
 }
 .userPhoto{
-  max-width: 60px;
-  max-height: 60px;
-  
+  border-radius: 50%;
+  display: inline-block;
+  overflow: hidden;
+  width: 88px;
+  height: 88px;
 }
 .userPhoto img{
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: 2px solid aqua;
+  width: 90px;
+  height:90px;
   object-fit: cover;
+  border-radius: 50%;
+  margin: -2px 0 0 -2px;
+  /* clip:rect(10px, 10px, 10px, 20px); */
+  /* border: 2px solid aqua; */
 }
 .UserFollowStatus{
   margin: 10px;
 }
+
 .usersRightBlock{
-  flex: 0 0 20%;
-}
-.usersRightBlock{
-  flex: 0 0 80%;
+  flex: 1 1 85%;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
-  border: 2px solid aqua;
+  border: 1px solid #656565;
   border-radius: 10px;
   padding: 10px;
-  margin-left: 20px;
+  margin-right: 25px;
 }
 .userName{
   font-size: 20px;
   font-weight: bold;
+}
+.userName a{
+  text-decoration: none;
+  color: #656565;
 }
 .page{
   color: white;
@@ -54,4 +71,29 @@
   color: gold;
   font-weight: bold;
   
+}
+button{
+  width: 100px;
+}
+
+.usersLeftBlock{
+  flex: 0 0 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+}
+/* .userDescr{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+} */
+.userName,
+.userStatus,
+.userCity,
+.userCountry{
+  padding: 10px 35px;
 }

@@ -5,7 +5,7 @@ import {NavLink} from 'react-router-dom';
 
 
 const User = (props) => {
-    return( 
+    return( <>
             <div  className={classes.item}>
                 <div className={classes.usersLeftBlock}>
                     <div className={classes.userPhoto}>
@@ -26,7 +26,10 @@ const User = (props) => {
                 </div>
                 <div className={classes.usersRightBlock}>
                     <div className={classes.userDescr}>
-                        <div className={classes.userName}>{props.user.name}</div>
+                        <div className={classes.userName}>
+                    <NavLink to={"profile/" + props.user.id}>
+                        {props.user.name}
+                   </NavLink></div>
                         <div className={classes.userStatus}>{props.user.status != null ? props.user.status : "Hey I using FaceBoorks now" }</div>
                     </div>
                     <div className={classes.userLocation}>
@@ -35,6 +38,8 @@ const User = (props) => {
                     </div>
                 </div>
             </div>
+            <hr className={classes.userCardUnderline}></hr>
+            </>
     );
 }
 

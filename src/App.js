@@ -2,7 +2,7 @@ import React from "react";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
-import {Route, withRouter, HashRouter} from "react-router-dom";
+import {Route, withRouter, HashRouter, Switch, Redirect} from "react-router-dom";
 import UsersContainer from "./components/Users/UsersContainer";
 import LoginPage from "./components/Login/Login";
 import Settings from "./components/Settings/Settings";
@@ -23,8 +23,17 @@ const News = React.lazy(() => import('./components/News/News'));
 
 class App extends React.Component {
 
+  catchAllUnhandledErrors = () =>{
+    alert('Some error ocurred!!!');
+  }
+
   componentDidMount = () => {
     this.props.initializeApp();
+    window.addEventListener('unhandledrejection', this.catchAllUnhandledErrors);
+  }
+
+  componentWillUnmount = () => {
+    window.removeEventListener('unhandledrejection', this.catchAllUnhandledErrors)
   }
 
   render(){
@@ -37,19 +46,23 @@ class App extends React.Component {
         <Navbar />
 
         <div className="app-wrapper-content">
-          <Route
-            path="/profile/:userId?"
-            render={withSuspense(ProfileContainer, {store: this.props.store})}
-          />
-          <Route
-            path="/dialogs"
-            render={withSuspense(DialogsContainer, {store: this.props.store})}
-          />
-          <Route path="/news" render={withSuspense(News)} />
-          <Route path="/music" render={() => <Music />} />
-          <Route path="/users" render={() => <UsersContainer />} />
-          <Route path="/settings" render={() => <Settings />} />
-          <Route path="/login" render={() => <LoginPage />} />
+          <Switch>
+          <Route exact path="/" render={() => <Redirect to={"/profile"}/>} />
+            <Route
+              path="/profile/:userId?"
+              render={withSuspense(ProfileContainer)}
+            />
+            <Route
+              path="/dialogs"
+              render={withSuspense(DialogsContainer)}
+            />
+            <Route path="/news" render={withSuspense(News)} />
+            <Route path="/music" render={() => <Music />} />
+            <Route path="/users" render={() => <UsersContainer />} />
+            <Route path="/settings" render={() => <Settings />} />
+            <Route path="/login" render={() => <LoginPage />} />
+            <Route path="*" render={() => <div>404 NOT FOUND</div>} />
+          </Switch>
         </div>
       </div>
       // </BrowserRouter>
@@ -70,11 +83,11 @@ const AppContainer = compose(
 
 const SocNetApp = () =>{
   return <React.StrictMode>
-    <HashRouter >
+    <BrowserRouter >
       <Provider store={store}>
-        <AppContainer store={store} />
+        <AppContainer />
       </Provider>
-    </HashRouter>
+    </BrowserRouter>
   </React.StrictMode>
 }
 

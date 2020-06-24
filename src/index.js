@@ -1,12 +1,11 @@
 import * as serviceWorker from './serviceWorker';
-import store from './redux/ReduxStore';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import SocNetApp from './App'
 
 
-ReactDOM.render( <SocNetApp store={store} /> , document.getElementById("root"));
+ReactDOM.render( <SocNetApp /> , document.getElementById("root"));
 
 
 // If you want your app to work offline and load faster, you can change

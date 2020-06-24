@@ -1,15 +1,21 @@
 .selectedPage{
-    color: gold;
     font-weight: bold;
     
   }
   .page{
-    color: white;
+    color: #656565;
     text-align: center;
     overflow: hidden;
+  }
+  .page span:hover{
+    text-decoration: underline;
+
   }
   .page span{
     padding: 0 15px;
     cursor: pointer;
   
+  }
+  .page button{
+    width: 40px;
   }

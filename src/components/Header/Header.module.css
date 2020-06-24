@@ -1,9 +1,25 @@
 .header{
   grid-area: h;
-  background: green;
+  background: #4A76A8;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
 }
 .header img{
   width: 40px;
+  margin-left: 10px;
+}
+.logoContainer{
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.NetwName{
+  color: white;
+  font-size: 32px;
+  padding-left: 10px;
 }
 .loginBlock{
   float: right;
