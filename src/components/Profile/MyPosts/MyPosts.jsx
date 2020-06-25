@@ -6,13 +6,13 @@ import {RequiredFieldTextarea} from './../../common/FormsControls/FormsControls'
 import {required, maxLength} from './../../../utils/validators/Validators';
 
 
-const maxLength15 = maxLength(15);
+const maxLength200 = maxLength(200);
 
 
 const MyPostsMessageForm = (props) => {
   return(
     <form onSubmit={props.handleSubmit}>
-      <Field component={RequiredFieldTextarea} name={'textInput'} validate={[required, maxLength15]}></Field>
+      <Field component={RequiredFieldTextarea} name={'textInput'} validate={[required, maxLength200]}></Field>
       <div>
         <button>Add Post</button>
         {/* <button>Remove</button> */}
@@ -61,15 +61,6 @@ const MyPosts = (props) => {
     <div className={classes.postBlock}>
       <h3>My posts</h3>
       <MyPostsReduxMessageForm onSubmit={onSubmit}/>
-      {/* <div>
-        <div>
-          <textarea onChange={onPostChange} ref={newPostRef} value={props.newPostText}/>
-        </div>
-        <div>
-          <button onClick={onAddPost}>Add Post</button>
-          <button>Remove</button>
-        </div>
-      </div> */}
       <div>{postItem}</div>
     </div>
   );

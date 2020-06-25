@@ -50,8 +50,8 @@ const ProfileInfo = (props) => {
 
 
   return (
-    <div>
-      <div>
+    <div className={classes.profileContainer}>
+      <div className={classes.headerImg}>
         <img src={profileHeader} />
       </div>
       <div className={classes.descriptionBlock}>
@@ -100,7 +100,7 @@ const ProfileInfo = (props) => {
           />}
         </div>
       </div>
-      <hr />
+      
     </div>
   );
 }

@@ -38,7 +38,7 @@ const ProfileStatus =(props) => {
     {!editMode &&
       <div className={classes.profileInactiveStatus}>
         <span onClick={activateEditMode}>{props.status || "----"}</span>
-        <div className={classes.stausHelp}>what's going on arround?</div>
+        {props.isOwner&&<div className={classes.stausHelp}>what's going on arround?</div>}
       </div>
     }
     {editMode &&

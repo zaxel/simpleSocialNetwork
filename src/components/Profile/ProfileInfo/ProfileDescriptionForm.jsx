@@ -12,13 +12,14 @@ const minLeight5 = minLength(5);
 const ProfileForm = ({handleSubmit, error}) => {
   
   return(
+  <div className={classes.profileForm}>
     <form onSubmit={handleSubmit} >
       <div>Name:</div>
       {CreateField('NAME', RenderFieldInput, [required, minLeight5, maxLength20], 'fullName', 'text', alphaNumeric)}
       <div>About me:</div>
       {CreateField('ABOUT ME', RequiredFieldTextarea, [minLeight5, maxLength200], 'aboutMe', 'text', null)}
-      <div>
-        <div>Socials:</div>
+      <div className={classes.profileSocialsContainer}>
+        <div className={classes.profileSocials}>Socials:</div>
         <div>WebSite:</div>
         {CreateField('Your WebSite', RenderFieldInput, [minLeight5, maxLength200, /*isUrlValid*/], 'website', 'text', null)}
         <div>MainLink:</div>
@@ -36,15 +37,20 @@ const ProfileForm = ({handleSubmit, error}) => {
         <div>youTube:</div>
         {CreateField('youTube', RenderFieldInput, [minLeight5, maxLength200, /*isUrlValid*/], 'youtube', 'text', null)}
       </div>
-      <div>Looking For Job:</div>
-      {CreateField('', 'input', [], 'lookingForAJob', 'checkbox', null)}
-      <div>Job Description:</div>
+      {/* <div>Looking For Job:</div>
+      {CreateField('', 'input', [], 'lookingForAJob', 'checkbox', null)} */}
+        <label className={classes.profileLabel}>
+                    {CreateField(null, 'input', [], 'lookingForAJob', 'checkbox', null, ' Looking For Job')}
+                </label>
+      <div className={classes.jobDescription}>Job Description:</div>
       {CreateField('Job Description', RequiredFieldTextarea, [minLeight5, maxLength200], 'lookingForAJobDescription', 'text', null)}
       {error && <div className={classes.error}> {error} </div>}
       <div>
         <button >SAVE PROFILE</button>
       </div>
     </form>
+  </div>
+    
   );
 }
 
