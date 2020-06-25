@@ -1,13 +1,15 @@
 .descriptionBlock{
+    background: #EDEEF0;
+    margin: 10px 0 10px 10px;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: flex-start;
     padding: 10px;
-    color: white;
+    color: #656565;
    
 }
-.userPhoto{
+.userPhotoContainer{
     flex: 0 0 15%; 
     display: flex;
     flex-direction: column;
@@ -15,13 +17,20 @@
     align-items: flex-start;
     
 }
-.userPhoto img{
-    width: 100px;
-    height: 100px;
+.userImgContainer{
+    width: 98px;
+    height: 98px;
     border: 2px solid white;
     border-radius: 20px;
+    overflow: hidden;
+}
+.userImgContainer img{
+    width: 100px;
+    height: 100px;
+    margin: -2px 0 0 -2px;
     object-fit: cover;
 }
+
 .userDescrContainer{
     flex: 0 0 85%; 
     display: flex;
@@ -41,7 +50,7 @@
 }
 .userName{
     font-size: 24px;
-    color: gold;
+    color: #656565;
     font-weight: bold;
     margin-bottom: 20px;
 }
@@ -52,14 +61,14 @@
 .userWeb a,
 .userLink a{
     text-decoration: none;
-    color: gold;
+    color: black;
 }
-.userWeb:active a,
-.userWeb:hover a,
-.userWeb:focus a,
-.userLink:hover a,
-.userLink:active a,
-.userLink:focus a{
+.userWeb a:active,
+.userWeb a:hover,
+.userWeb a:focus,
+.userLink a:hover,
+.userLink a:active,
+.userLink a:focus{
     opacity: .6;
 }
 hr{
@@ -68,9 +77,40 @@ hr{
     background: white;
 }
 .editProfile button{
-    margin-top: 80px;
+    margin-top: 60px;
 }
 .error{
     color: red;
-    font-weight: bold;
 }
+.uploadButtonContainer input[type="file"]{
+    display: none;
+}
+.uploadButton p{
+    background-color: #4A76A8;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+.uploadButton p:hover{
+    opacity: .6;
+}
+.profileStatus{
+    margin: 20px;
+    cursor: pointer;
+}
+.stausHelp{
+    display: none;
+    margin-left: 20px;
+    font-size: 12px;
+    color: black;
+}
+.profileInactiveStatus span:hover +div{
+    display: block;
+  }

@@ -55,17 +55,25 @@ const ProfileInfo = (props) => {
         <img src={profileHeader} />
       </div>
       <div className={classes.descriptionBlock}>
-        <div className={classes.userPhoto}>
+        <div className={classes.userPhotoContainer}>
           <div className={classes.userPhotoBlock}>
-            <img
-              src={
-                props.profile.photos.small
-                  ? props.profile.photos.small
-                  : userPhoto
-              }
-            />
+            <div className={classes.userImgContainer}>
+              <img
+                src={
+                  props.profile.photos.small
+                    ? props.profile.photos.small
+                    : userPhoto
+                }
+              />
+            </div>
+            
             {props.isOwner && (
-              <input type={"file"} onChange={onMainPhotoSelected} />
+              <div className={classes.uploadButtonContainer}>
+                <label for='file-upload' className={classes.uploadButton}>
+                  <p>Upload Photo</p>
+                </label>
+                <input id='file-upload' type={"file"} onChange={onMainPhotoSelected} />
+              </div>
             )}
           </div>
           <div className={classes.editProfile}>

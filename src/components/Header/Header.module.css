@@ -29,10 +29,16 @@
 
 }
 .loginBlock a{
+  outline: none;
   text-decoration: none;
   color: white;
   font-size: 20px;
   padding: 10px;
+}
+.loginBlock a:hover,
+.loginBlock a:active,
+.loginBlock a:focus{
+  opacity: .6;
 }
 .loginBlock img{
   height: 40px;

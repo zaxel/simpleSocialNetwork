@@ -17,6 +17,7 @@
   color: #000;
   background: white;
   box-sizing: border-box;
+  margin-bottom: 2px;
 }
 .userPhoto{
   border-radius: 50%;

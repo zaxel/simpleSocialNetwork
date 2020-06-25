@@ -3,6 +3,8 @@ import Profile from './Profile';
 import {connect} from 'react-redux';
 import {setProfile, setUserStatus, updateUserStatus, savePhoto, updateProfile} from './../../redux/ProfileReducer';
 import { withRouter } from 'react-router-dom';
+import classes from "./Profile.module.css";
+
 import { compose } from "redux";
 
 class ProfileContainer extends React.Component {

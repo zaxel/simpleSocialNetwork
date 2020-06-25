@@ -5,7 +5,7 @@ import {NavLink} from 'react-router-dom';
 
 
 const User = (props) => {
-    return( <>
+    return( 
             <div  className={classes.item}>
                 <div className={classes.usersLeftBlock}>
                     <div className={classes.userPhoto}>
@@ -38,8 +38,7 @@ const User = (props) => {
                     </div>
                 </div>
             </div>
-            <hr className={classes.userCardUnderline}></hr>
-            </>
+            
     );
 }
 

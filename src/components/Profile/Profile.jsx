@@ -7,7 +7,7 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 const Profile = (props) => {
 
   return (
-    <div >
+    <div className={classes.profileContainer}>
       <ProfileInfo 
         isOwner={props.isOwner}
         profile={props.profile} 

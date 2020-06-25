@@ -34,10 +34,11 @@ const ProfileStatus =(props) => {
 
   
   return(
-    <>
+    <div className={classes.profileStatus}>
     {!editMode &&
-      <div >
+      <div className={classes.profileInactiveStatus}>
         <span onClick={activateEditMode}>{props.status || "----"}</span>
+        <div className={classes.stausHelp}>what's going on arround?</div>
       </div>
     }
     {editMode &&
@@ -45,7 +46,7 @@ const ProfileStatus =(props) => {
         <input onChange={onStatusChange} value={status}   autoFocus={true} onBlur={deActivateEditMode}/>
       </div>
     }
-    </>
+    </div>
   );
   
 }
