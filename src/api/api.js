@@ -1,6 +1,5 @@
 import React from 'react';
 import * as axios from 'axios';
-import {Redirect} from 'react-router-dom';
 
 
 const instence = axios.create({
@@ -109,7 +108,7 @@ export const authAPI = {
         .then (response => {
             return response.data;
         })
-        .then(<Redirect to={"/login"}/>)
+        
     },
 
 }

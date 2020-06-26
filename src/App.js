@@ -24,7 +24,7 @@ const News = React.lazy(() => import('./components/News/News'));
 class App extends React.Component {
 
   catchAllUnhandledErrors = () =>{
-    alert('Some error ocurred!!!');
+    console.log('Some error ocurred!!! UnhandledError hsndler');
   }
 
   componentDidMount = () => {

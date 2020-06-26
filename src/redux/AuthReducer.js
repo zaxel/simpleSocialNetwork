@@ -1,6 +1,7 @@
 import {usersAPI, authAPI, securityAPI} from './../api/api';
 import {stopSubmit} from 'redux-form';
 
+
 const SET_USERS_DATA = 'SET-USERS-DATA';
 const SET_USER_PROFILE_LOGO = 'SET-USER-PROFILE-LOGO';
 const GET_CAPTCHA_URL_SUCCESS = 'GET-CAPTCHA-URL-SUCCESS';
@@ -99,11 +100,16 @@ export const getCaptchaUrl = () => {
   };
 };
 
+
+
 export const logout = () => {
+  
+
   return async (dispatch) => {
     const data = await authAPI.logout();
     if (data.resultCode === 0) {
       dispatch(setAuthUserData(null, null, null, false));
+
     }
   };
 };

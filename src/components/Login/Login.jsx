@@ -4,12 +4,14 @@ import {RenderFieldInput, CreateField} from './../common/FormsControls/FormsCont
 import {required, maxLength} from './../../utils/validators/Validators';
 import { connect } from 'react-redux';
 import {login, logout} from './../../redux/AuthReducer'
-import { Redirect } from 'react-router-dom';
+import { Redirect} from 'react-router-dom';
 import classes from './Login.module.css';
+
 
 const maxLength25 = maxLength(25);
 
 const LoginForm = ({handleSubmit, error, captchaUrl}) =>{
+
     return (
         <div className={classes.loginForm}>
             <form onSubmit={handleSubmit}>
