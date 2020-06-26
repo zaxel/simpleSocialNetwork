@@ -1,0 +1,2 @@
+(this.webpackJsonpsoc_net=this.webpackJsonpsoc_net||[]).push([[5],{309:function(e,n,t){},310:function(e,n,t){"use strict";t.r(n);var s=t(0),c=t.n(s);t(309);n.default=function(){return c.a.createElement("div",null,"Some News here")}}}]);
+//# sourceMappingURL=5.c2071266.chunk.js.map
