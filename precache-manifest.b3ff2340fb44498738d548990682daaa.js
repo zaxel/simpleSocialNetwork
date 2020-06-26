@@ -1,14 +1,14 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "053f9184cd5fec2e8914a0c774c339a7",
+    "revision": "26fe5182e044c641619cd1e0f6799bb3",
     "url": "/simpleSocialNetwork/index.html"
   },
   {
-    "revision": "91bf8d66e27463227427",
+    "revision": "236a4826f1f1f2efd0e1",
     "url": "/simpleSocialNetwork/static/css/3.31442f2f.chunk.css"
   },
   {
-    "revision": "4c1b504c93113eb42b0f",
+    "revision": "3c90d357b6b116c4aa1b",
     "url": "/simpleSocialNetwork/static/css/4.814989c7.chunk.css"
   },
   {
@@ -16,36 +16,36 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/simpleSocialNetwork/static/css/5.25b44a53.chunk.css"
   },
   {
-    "revision": "2248f0f4081423376300",
+    "revision": "d006f283733a1388bd0c",
     "url": "/simpleSocialNetwork/static/css/main.caee6499.chunk.css"
   },
   {
-    "revision": "e6db14ad840bfb0c395f",
-    "url": "/simpleSocialNetwork/static/js/2.aaab8089.chunk.js"
+    "revision": "37e20e2571c2c8ce682f",
+    "url": "/simpleSocialNetwork/static/js/2.fd75a16a.chunk.js"
   },
   {
     "revision": "3453b8997016469371284a28c0e873e2",
-    "url": "/simpleSocialNetwork/static/js/2.aaab8089.chunk.js.LICENSE.txt"
+    "url": "/simpleSocialNetwork/static/js/2.fd75a16a.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "91bf8d66e27463227427",
-    "url": "/simpleSocialNetwork/static/js/3.196a7113.chunk.js"
+    "revision": "236a4826f1f1f2efd0e1",
+    "url": "/simpleSocialNetwork/static/js/3.3a3da119.chunk.js"
   },
   {
-    "revision": "4c1b504c93113eb42b0f",
-    "url": "/simpleSocialNetwork/static/js/4.ab8269fe.chunk.js"
+    "revision": "3c90d357b6b116c4aa1b",
+    "url": "/simpleSocialNetwork/static/js/4.631e94f5.chunk.js"
   },
   {
     "revision": "3253e43db928b365e0f1",
     "url": "/simpleSocialNetwork/static/js/5.c2071266.chunk.js"
   },
   {
-    "revision": "2248f0f4081423376300",
-    "url": "/simpleSocialNetwork/static/js/main.328d2f9f.chunk.js"
+    "revision": "d006f283733a1388bd0c",
+    "url": "/simpleSocialNetwork/static/js/main.c1875b59.chunk.js"
   },
   {
-    "revision": "80f062a50f19b788a493",
-    "url": "/simpleSocialNetwork/static/js/runtime-main.89d47b27.js"
+    "revision": "80b22aa69bf6af4aa710",
+    "url": "/simpleSocialNetwork/static/js/runtime-main.45e99d49.js"
   },
   {
     "revision": "53757d9306796cd8c19df677d30a10c7",
