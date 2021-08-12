@@ -13,8 +13,9 @@ it has a lot interesting features implemented, such us:
 *************************************************
 *** YOU CAN TRY IT BY LOGIN WITH FREE ACCOUNT ***
 *************************************************
-*** Login:    free@samuraijs.com              ***
-*** Pass:     free                            ***
+Login:    free@samuraijs.com             
+*************************************************
+Pass:     free  
 *************************************************
 
 libraries, hooks and other features in this project:
@@ -28,5 +29,5 @@ libraries, hooks and other features in this project:
 * componentDidMount, componentDidUpdate, shouldComponentUpdate, useState, useEffect, withRouter, compose
 * cookie/ login, redux-form
 * React.lazy, React.Suspense
-
+* and other...
 
