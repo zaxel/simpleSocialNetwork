@@ -1,5 +1,5 @@
 # FaceBoork
-this is the lite **`social network`** on **`react`**.
+this is the lite **`react app social network`**.
 
 it has a lot interesting features implemented, such us: 
 * user list, users and other data retrieved from/send to another server;
@@ -15,12 +15,14 @@ it has a lot interesting features implemented, such us:
 *************************************************
 ### *** YOU CAN TRY IT BY LOGIN WITH FREE ACCOUNT ***
 
+**`FaceBoork`** ------ [https://zaxel.github.io/simpleSocialNetwork/](https://zaxel.github.io/simpleSocialNetwork/)
+
 | Login: | Pass: |
 |--------|-------|
 | free@samuraijs.com  |   free             |
 
 
-`to see profiles with logos go to last pages`                            
+`to see profiles with logos visit last pages`                            
 
 *************************************************
 
