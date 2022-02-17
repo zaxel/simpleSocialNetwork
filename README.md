@@ -2,7 +2,7 @@
 this is the lite **`social network`** on **`react`**.
 
 it has a lot interesting features implemented, such us: 
-* user list, users and other data retrieved from/send to another server; user list, users and other data retrieved from/send to another server;user list, users and other data retrieved from/send to another server;
+* user list, users and other data retrieved from/send to another server;
 * page pagination;
 * user account, account editor:
     * photo upload and update;
